@@ -12,7 +12,7 @@
 
   * Install all dependencies from the pipfile.
 
-  * Update Database settings at InstaMerch/InstaMerch/settings.py to your preferred database.
+  * Update Database settings at `InstaMerch/InstaMerch/settings.py` to your preferred database.
 
 ## Running the application
 
