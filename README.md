@@ -18,4 +18,4 @@
 
   * Navigate to where the manage.py file is in your terminal
 
-  * run "python manage.py runserver"
+  * run `python manage.py runserver`
