@@ -4,13 +4,6 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
-class Designer(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.user.username
-
-
 class Address(models.Model):
     address_line1 = models.CharField(max_length=50)
     address_line2 = models.CharField(max_length=50)
@@ -24,7 +17,6 @@ class Address(models.Model):
 
 class Design(models.Model):
     picture = models.ImageField(upload_to='images/')
-    designer = models.OneToOneField(Designer, on_delete=models.CASCADE)
     category = models.CharField(max_length=10)
     price = models.IntegerField()
 
@@ -32,7 +24,7 @@ class Design(models.Model):
         return self.category
 
 
-class Orders(models.Model):
+class Order(models.Model):
     product = models.OneToOneField(Design, on_delete=models.CASCADE)
     size = models.CharField(max_length=5, null=True, blank=True)
     delivery_address = models.OneToOneField(Address, on_delete=models.CASCADE)
@@ -40,3 +32,16 @@ class Orders(models.Model):
 
     def __str__(self):
         return self.product.category
+
+
+class Designer(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    addresses = models.ManyToManyField(Address,  null=True)
+    designs = models.ManyToManyField(Design,  null=True)
+    orders = models.ManyToManyField(Order,  null=True)
+
+    def __str__(self):
+        return self.user.username
+
+
+Design.designer = models.OneToOneField(Designer, on_delete=models.CASCADE)
