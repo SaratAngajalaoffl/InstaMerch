@@ -1,2 +1,4 @@
 .mypy_cache
 InstaMerch/InstaMerch/settings.py
+InstaMerch/API/media
+InstaMerch/API/migrations
