@@ -7,6 +7,8 @@ from django.contrib.auth.models import User
 
 class Designer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.user.username
@@ -19,6 +21,8 @@ class Address(models.Model):
     country = models.CharField(max_length=50)
     pincode = models.CharField(max_length=20)
     designer = models.ForeignKey(Designer, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.address_line1
@@ -29,6 +33,8 @@ class Design(models.Model):
     category = models.CharField(max_length=10)
     price = models.IntegerField()
     designer = models.ForeignKey(Designer, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.category
@@ -40,6 +46,9 @@ class Order(models.Model):
     delivery_address = models.OneToOneField(Address, on_delete=models.CASCADE)
     status = models.CharField(max_length=20, default='Order Recieved')
     designer = models.ForeignKey(Designer, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    expected_date = models.DateTimeField()
 
     def __str__(self):
         return self.product.category

@@ -28,6 +28,14 @@ class Address_serializer(serializers.ModelSerializer):
 
 class Orders_serializer(serializers.ModelSerializer):
 
+    design_id = serializers.CharField(source='product')
+    price = serializers.IntegerField(source='product.price')
+    designer = serializers.CharField(source='product.designer.user.username')
+    placed_on = serializers.CharField(source='created_at')
+    # address = Address_serializer(read_only=True)
+
     class Meta:
         model = Order
-        fields = '__all__'
+        fields = ['id', 'design_id', 'status',
+                  'price', 'designer', 'placed_on', 'expected_date', 'delivery_address']
+        depth = 1
