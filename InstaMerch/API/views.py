@@ -12,6 +12,6 @@ from .serializers import Design_serializer, Designer_serializer, Address_seriali
 def api_org_get_designs(request, orgid):
     org = User.objects.get(username=orgid)
     designer = Designer.objects.get(user=org)
-    design = Design.objects.get(designer=designer)
-    serializer = Design_serializer(design)
+    designs = Design.objects.filter(designer=designer)
+    serializer = Design_serializer(designs, many=True)
     return Response(serializer.data)

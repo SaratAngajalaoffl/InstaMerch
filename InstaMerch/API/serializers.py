@@ -11,9 +11,12 @@ class Designer_serializer(serializers.ModelSerializer):
 
 class Design_serializer(serializers.ModelSerializer):
 
+    designer = serializers.ReadOnlyField(source='designer.user.username')
+    picture_url = serializers.CharField(source='picture.url')
+
     class Meta:
         model = Design
-        fields = '__all__'
+        fields = ['price', 'picture_url', 'id', 'designer', 'category']
 
 
 class Address_serializer(serializers.ModelSerializer):
