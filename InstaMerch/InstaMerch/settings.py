@@ -41,11 +41,13 @@ INSTALLED_APPS = [
     'API',
     'WEB',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -58,7 +60,7 @@ ROOT_URLCONF = 'InstaMerch.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,9 +82,9 @@ WSGI_APPLICATION = 'InstaMerch.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'instamerch',
-        'USER': 'postgres',
-        'PASSWORD': 'chandrasar',
+        'NAME': # Your postgresdb name,
+        'USER': # Your postgres username,
+        'PASSWORD': # Your postgres password,
         'HOST': 'localhost'
     }
 }
@@ -106,7 +108,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -124,8 +125,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+
+
 STATIC_URL = '/static/'
 
 MEDIA_URL = '/API/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'API/media')
+
+STATICFILES_DIRS = [Path(BASE_DIR).joinpath('static')]
+
+STRIPE_PUBLISHABLE_KEY = # Your stripe pk 
+STRIPE_SECRET_KEY = # Your stripe sk
+
+STRIPE_ENDPOINT_SECRET = # Your Local stripe webhook key
+
+CORS_ORIGIN_WHITELIST = 'http://localhost:8000',
