@@ -8,4 +8,5 @@ urlpatterns = [
     path('orders/<str:orderid>', views.api_get_order_status, name="order_status"),
     path('place-order/', csrf_exempt(views.api_post_order_status), name="post_order"),
     path('config/', views.stripe_config),
+    path('webhook/', views.stripe_webhook),
 ]
