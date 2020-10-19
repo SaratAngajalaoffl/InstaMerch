@@ -1,8 +1,11 @@
 from django.urls import path
+from django.views.decorators.csrf import csrf_exempt
 
-from .views import api_org_get_designs, api_get_order_status
+import API.views as views
 
 urlpatterns = [
-    path('<str:orgid>/designs', api_org_get_designs, name="get_designs"),
-    path('orders/<str:orderid>', api_get_order_status, name="order_status")
+    path('<str:orgname>/designs', views.api_org_get_designs, name="get_designs"),
+    path('orders/<str:orderid>', views.api_get_order_status, name="order_status"),
+    path('place-order/', csrf_exempt(views.api_post_order_status), name="post_order"),
+    path('config/', views.stripe_config),
 ]

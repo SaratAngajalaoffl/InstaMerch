@@ -41,11 +41,13 @@ INSTALLED_APPS = [
     'API',
     'WEB',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -58,7 +60,7 @@ ROOT_URLCONF = 'InstaMerch.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -127,8 +129,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+
+
 STATIC_URL = '/static/'
 
 MEDIA_URL = '/API/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'API/media')
+
+STATICFILES_DIRS = [Path(BASE_DIR).joinpath('static')]
+
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51HdApdJataoePjzdaKSzzmEn9Om5eGUuuPmMSZ8IQIjOFhouLnfJoOoDUjRV6zsvHRAN2itovaR2wFc7sHIFBnUj00vvki6H4v'
+STRIPE_SECRET_KEY = 'sk_test_51HdApdJataoePjzdui0kaoZ8d9mW6RlQ5FNVWXSNScl8p2iAjrUdr2WXwINokJAQbv4qKWmgLiXiYv90tZpmnFgf00kd1gblXl'
+
+STRIPE_ENDPOINT_SECRET = 'whsec_m1lYFL086RnRawI9UhFXClMmmSYWDMgI'
+
+CORS_ORIGIN_WHITELIST = 'http://localhost:8000',

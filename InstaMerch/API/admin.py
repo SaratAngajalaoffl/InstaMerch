@@ -1,9 +1,8 @@
 from django.contrib import admin
-from .models import Designer, Address, Design, Order
+from .models import Account, Address, Design, Order, Category
 
-# Register your models here.
-
-admin.site.register(Designer)
+admin.site.register(Account)
 admin.site.register(Address)
 admin.site.register(Design)
 admin.site.register(Order)
+admin.site.register(Category)

@@ -10,7 +10,7 @@ django = "*"
 djangorestframework = "*"
 psycopg2 = "*"
 pillow = "*"
-dj-stripe = "*"
+django-cors-headers = "*"
 
 [requires]
 python_version = "3.8"
