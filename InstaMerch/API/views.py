@@ -97,6 +97,6 @@ def stripe_webhook(request):
         order = models.Order.objects.get(
             session_id=event['data']['object']['id'])
         order.status = "Payment Confirmed"
-        order.save()    
+        order.save()
 
     return HttpResponse(status=200)

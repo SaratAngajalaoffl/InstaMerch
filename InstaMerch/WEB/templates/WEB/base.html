@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>InstaMerch</title>
+		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+	</head>
+	<body>
+		<div class="navbar">
+			<div class="link_container">
+				<div class="logo">
+					<a href="/"> InstaMerch </a>
+				</div>
+				<div class="left_links">
+					<a href="/" class="navlinks login">Login</a>
+					<a href="/" class="navlinks signup"> Sign Up </a>
+				</div>
+			</div>
+		</div>
+		{% block content %}{% endblock content %}
+	</body>
+</html>
