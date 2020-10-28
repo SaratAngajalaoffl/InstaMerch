@@ -7,6 +7,8 @@ from django.contrib.postgres.fields import ArrayField
 
 class Account(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    picture = models.ImageField(
+        upload_to='images/profile_pics', blank=True, null=True)
 
     def __str__(self):
         return self.user.username
@@ -37,7 +39,7 @@ class Category(models.Model):
 
 
 class Design(models.Model):
-    picture = models.ImageField(upload_to='images/')
+    picture = models.ImageField(upload_to='images/designs')
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     account = models.ForeignKey('Account', on_delete=models.CASCADE)
 
