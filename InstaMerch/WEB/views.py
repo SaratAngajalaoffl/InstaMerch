@@ -21,10 +21,10 @@ def purchase_view(request):
 
 
 def register_view(request):
-    form = UserCreationForm()
+    form = forms.CreateUserForm()
 
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = forms.CreateUserForm(request.POST)
 
         if form.is_valid():
             form.save()

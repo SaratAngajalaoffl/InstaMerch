@@ -1,20 +1,35 @@
 {% extends 'WEB/base.html' %} {% block content %}
 
 <div class="auth-background">
-	{% if form.errors %}
-	<p>something wrong,I can feel it.</p>
-	{% endif %} {% if next %}
-	<p>Can't access the page</p>
-	{% endif %}
+	<h1 class="form-header">LOGIN</h1>
 
-	<form method="post" action="{% url 'login' %}">
-		{% csrf_token %}
-		<p>Username:{{ form.username }}</p>
-		<p>Password:{{ form.password }}</p>
+	<form method="post" class="register-form" action="{% url 'login' %}">
+		{% csrf_token %} {% if form.errors %}
+		<p>{{ form.errors }}</p>
+		{% endif %}
+		<p>{{ form.username }}</p>
+		<p>{{ form.password }}</p>
 
-		<p><input type="submit" value="login" nsame="" id="" /></p>
+		<p>
+			<input
+				type="submit"
+				value="LOGIN"
+				class="register-button"
+				nsame=""
+				id=""
+			/>
+		</p>
 		<p><input type="hidden" name="next" value="{{ next }}" /></p>
 	</form>
+
+	<script>
+		var form_fields = document.getElementsByTagName('input');
+		form_fields[1].placeholder = 'ENTER USERNAME';
+		form_fields[1].className += 'form-field';
+		form_fields[1].autocomplete = 'off';
+		form_fields[2].placeholder = 'ENTER PASSWORD';
+		form_fields[2].className += 'form-field';
+	</script>
 </div>
 
 {% endblock content %}

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100;1,300;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100;1,400;1,500;1,700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
 html,
 body {
 	margin: 0;
@@ -125,21 +125,68 @@ a {
 /* LOGIN PAGE */
 
 .auth-background {
-	background-image: url('/static/images/Hero_image.png');
+	background-image: url('/static/images/Background.png');
 	background-size: cover;
 	height: 100vh;
 	width: 100vw;
-	display: grid;
-	place-content: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	overflow: scroll;
+}
+
+/* Register Page */
+
+.form-header {
+	color: black;
+	font-family: 'Architects Daughter', cursive;
+	text-align: center;
+	font-size: 50px;
+}
+
+.register-form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.register-button {
+	background-color: black;
+	color: white;
+	font-family: 'Architects Daughter', cursive;
+	width: 30vw;
+	height: 7vh;
+	margin: 40px 0 0 0;
+	font-size: 30px;
+	border-radius: 20px;
+}
+
+.form-field {
+	text-align: center;
+	font-family: 'Architects Daughter', cursive;
+	width: 40vw;
+	height: 7vh;
+	border: none;
+	font-size: 30px;
+	border-radius: 20px;
+}
+
+.errorlist {
+	color: red;
+}
+
+input:focus {
+	border: none;
 }
 
 /* Hide scollbars */
 
-html::-webkit-scrollbar {
+*::-webkit-scrollbar {
 	display: none;
 }
 
-html {
+* {
 	-ms-overflow-style: none;
 	scrollbar-width: none;
 }
