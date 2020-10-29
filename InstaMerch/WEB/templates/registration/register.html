@@ -1,0 +1,14 @@
+{% extends 'WEB/base.html' %} {% block content %}
+
+<div class="auth-background">
+<form method="post" action="{% url 'register' %}">
+	{% csrf_token %}
+	{% if form.errors %}
+	<p>There are errors in the form</p>
+	{% endif %} 
+	{{ form }}
+	<input type="submit" value="register" />
+</form>
+</div>
+</form>
+{% endblock content %}

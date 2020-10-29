@@ -15,30 +15,28 @@
 				</div>
 				{% if not user.is_authenticated %}
 				<div class="left_links">
-					<a href="/" class="navlinks login">Login</a>
-					<a href="/" class="navlinks signup">Sign Up </a>
+					<a href="{% url 'login' %}" class="navlinks login">Login</a>
+					<a href="{% url 'register' %}" class="navlinks signup"
+						>Sign Up
+					</a>
 				</div>
 				{% else %}
 				<div class="left_links">
 					<a href="/" class="navlinks login">Orders</a>
 					<a href="/" class="navlinks login">Cart</a>
+					<a href="{% url 'logout' %}" class="navlinks login"
+						>Logout</a
+					>
+					<!-- prettier-ignore -->
 					<a href="/" class="navlinks">
-						<img
-							class="avatar"
-							{%
-							if
-							user.account.picture
-							%}
-							src="{{ user.account.picture.url }}"
-							{%
-							else
-							%}
-							src="{% static 'images/avatar.png' %}"
-							{%
-							endif
-							%}
-							alt="Profile"
-						/>
+						<img 
+						class="avatar" 
+						{% if user.account.picture %} 
+						src="{{user.account.picture.url }}" 
+						{% else %}
+						src="{% static 'images/avatar.png' %}" 
+						{% endif %}
+						alt="{{user.account.picture}}" />
 					</a>
 				</div>
 				{% endif %}

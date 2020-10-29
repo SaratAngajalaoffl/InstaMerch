@@ -1,0 +1,20 @@
+{% extends 'WEB/base.html' %} {% block content %}
+
+<div class="auth-background">
+	{% if form.errors %}
+	<p>something wrong,I can feel it.</p>
+	{% endif %} {% if next %}
+	<p>Can't access the page</p>
+	{% endif %}
+
+	<form method="post" action="{% url 'login' %}">
+		{% csrf_token %}
+		<p>Username:{{ form.username }}</p>
+		<p>Password:{{ form.password }}</p>
+
+		<p><input type="submit" value="login" nsame="" id="" /></p>
+		<p><input type="hidden" name="next" value="{{ next }}" /></p>
+	</form>
+</div>
+
+{% endblock content %}

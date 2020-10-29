@@ -122,6 +122,17 @@ a {
 	align-items: center;
 }
 
+/* LOGIN PAGE */
+
+.auth-background {
+	background-image: url('/static/images/Hero_image.png');
+	background-size: cover;
+	height: 100vh;
+	width: 100vw;
+	display: grid;
+	place-content: center;
+}
+
 /* Hide scollbars */
 
 html::-webkit-scrollbar {
