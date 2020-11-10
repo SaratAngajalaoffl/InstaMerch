@@ -6,13 +6,33 @@ from django.contrib.auth.decorators import login_required
 import WEB.forms as forms
 import API.models as models
 import WEB.models as web_models
+import datetime
 
 def home_view(request):
 
+    designs = models.Design.objects.all()
+    featured = []
+    recent = []
+
+    for design in designs:
+        if design.isfeatured:
+            featured.append(design)
+        timedelta = design.createdon - datetime.date.today()
+        if timedelta.days < 10:
+            recent.append(design)
+        
+        if len(recent) == 6:
+            break 
+
+    bestsellers = sorted(designs,key = lambda design:design.purchases)[::-1][:6]
+
     context = {
         "user": request.user,
-        "designs": models.Design.objects.all()
+        'featured': featured,
+        'recent': recent,
+        'bestsellers':bestsellers
     }
+
     return render(request, 'WEB/home.html', context)
 
 

@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.contrib.postgres.fields import ArrayField
 
 # Create your models here.
 
@@ -42,7 +41,10 @@ class Design(models.Model):
     picture = models.ImageField(upload_to='images/designs')
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     account = models.ForeignKey('Account', on_delete=models.CASCADE)
-
+    isfeatured = models.BooleanField(default=False)
+    createdon = models.DateField(auto_now_add=True)
+    purchases = models.IntegerField(default=0)
+    
     def __str__(self):
         return self.category.name
 
