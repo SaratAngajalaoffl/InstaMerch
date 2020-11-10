@@ -1,4 +1,4 @@
-GET http://localhost:8000/api/RCB/designs
+GET http://localhost:8000/api/Sampath/designs
 
 ####################################################################################
 
@@ -10,9 +10,20 @@ POST http://localhost:8000/api/place-order/ http/1.1
 Content-Type: application/json
 
 {
-    "product": 1,
-    "address": 1,
-    "success_url": "http://localhost:8000/admin",
-    "cancelled_url": "http://localhost:8000/",
-    "quantity":3
+    "products": [
+        {
+            "product_id" : 1,
+            "qty" : 1 
+        }
+    ],
+    "address": {
+        "address_line1" : "Flat no:401",
+        "address_line2" : "Satya Castle,Shanti Nagar",
+        "state" : "Andhra Pradesh",
+        "city" : "Visakhapatnam",
+        "country" : "India",
+        "pincode" : "530009"
+    },
+    "success_url": "http://localhost:8000/",
+    "cancelled_url": "http://localhost:8000/"
 }

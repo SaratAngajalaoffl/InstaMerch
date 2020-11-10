@@ -23,7 +23,7 @@ class Address(models.Model):
     city = models.CharField(max_length=20)
     country = models.CharField(max_length=50)
     pincode = models.CharField(max_length=20)
-    account = models.ForeignKey('Account', on_delete=models.CASCADE)
+    account = models.ForeignKey('Account', on_delete=models.PROTECT, null=True, blank=True)
 
     def __str__(self):
         return self.address_line1
@@ -50,7 +50,7 @@ class Design(models.Model):
 
 
 class Order(models.Model):
-    product = models.ForeignKey('Design', on_delete=models.CASCADE)
+    products = models.ManyToManyField('Design')
     address = models.ForeignKey('Address', on_delete=models.CASCADE)
     session_id = models.CharField(max_length=1000)
     status = models.CharField(
@@ -60,4 +60,10 @@ class Order(models.Model):
         'Account', on_delete=models.PROTECT, null=True, blank=True)
 
     def __str__(self):
-        return self.product.category.name
+        if self.account:
+            return str(self.account)
+        else:
+            s = ""
+            for product in self.products.all():
+                s = s + str(product) + ","  
+            return s[:-1]
