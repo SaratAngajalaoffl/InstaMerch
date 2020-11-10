@@ -6,7 +6,7 @@
 	<div class="content-header">Latest Collections</div>
 	<div class="content-body">
 		{% for design in designs %}
-		<a class="content-product" href="/">
+		<a class="content-product no-style" href="/designs/{{design.id}}">
 			<div class="product-img">
 				<img
 					src="{{ design.picture.url }}"
@@ -17,7 +17,9 @@
 			</div>
 			<div class="product-description">
 				<div class="name">{{design}}</div>
-				<div class="price">₹&nbsp{{design.category.price}}</div>
+				<div class="price">
+					₹&nbsp{{design.category.price|stringformat:"i"|slice:":-2"}}
+				</div>
 			</div>
 		</a>
 		{% endfor %}
@@ -26,7 +28,7 @@
 	<div class="content-header">Featured Collections</div>
 	<div class="content-body">
 		{% for design in designs %}
-		<a class="content-product" href="/">
+		<a class="content-product no-style" href="/">
 			<div class="product-img">
 				<img
 					src="{{ design.picture.url }}"
@@ -37,7 +39,9 @@
 			</div>
 			<div class="product-description">
 				<div class="name">{{design}}</div>
-				<div class="price">₹&nbsp{{design.category.price}}</div>
+				<div class="price">
+					₹&nbsp{{design.category.price|stringformat:"i"|slice:":-2"}}
+				</div>
 			</div>
 		</a>
 		{% endfor %}
@@ -46,7 +50,7 @@
 	<div class="content-header">Best Sellers</div>
 	<div class="content-body">
 		{% for design in designs %}
-		<a class="content-product" href="/">
+		<a class="content-product no-style" href="/">
 			<div class="product-img">
 				<img
 					src="{{ design.picture.url }}"
@@ -57,7 +61,9 @@
 			</div>
 			<div class="product-description">
 				<div class="name">{{design}}</div>
-				<div class="price">₹&nbsp{{design.category.price}}</div>
+				<div class="price">
+					₹&nbsp{{design.category.price|stringformat:"i"|slice:":-2"}}
+				</div>
 			</div>
 		</a>
 		{% endfor %}

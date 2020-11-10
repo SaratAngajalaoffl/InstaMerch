@@ -22,7 +22,7 @@ fetch("/api/config/")
                     "Content-Type": "application/json",
                     "X-CSRFToken": getCookie("csrftoken")
                 },
-                body: JSON.stringify({ "product": 2, "address": 1, "success_url": "http://localhost:8000/", "cancelled_url": "http://localhost:8000/", "quantity": 3 }),
+                body: JSON.stringify({ "product": 5, "address": 1, "success_url": "http://localhost:8000/", "cancelled_url": "http://localhost:8000/", "quantity": 3 }),
             })
                 .then((result) => { return result.json(); })
                 .then((data) => {

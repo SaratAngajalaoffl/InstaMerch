@@ -11,24 +11,26 @@
 		<div class="navbar">
 			<div class="link_container">
 				<div class="logo">
-					<a href="/"> InstaMerch </a>
+					<a class="no-style" href="/"> InstaMerch </a>
 				</div>
 				{% if not user.is_authenticated %}
 				<div class="left_links">
-					<a href="{% url 'login' %}" class="navlinks login">Login</a>
+					<a href="{% url 'login' %}" class="navlinks no-style login"
+						>Login</a
+					>
 					<a href="{% url 'register' %}" class="navlinks signup"
 						>Sign Up
 					</a>
 				</div>
 				{% else %}
 				<div class="left_links">
-					<a href="/" class="navlinks login">Orders</a>
-					<a href="/" class="navlinks login">Cart</a>
-					<a href="{% url 'logout' %}" class="navlinks login"
+					<a href="/" class="navlinks no-style login">Orders</a>
+					<a href="/" class="navlinks no-style login">Cart</a>
+					<a href="{% url 'logout' %}" class="navlinks no-style login"
 						>Logout</a
 					>
 					<!-- prettier-ignore -->
-					<a href="/" class="navlinks">
+					<a href="/" class="navlinks no-style">
 						<img 
 						class="avatar" 
 						{% if user.account.picture %} 

@@ -1,4 +1,4 @@
-GET http://localhost:8000/api/praneeth/designs
+GET http://localhost:8000/api/RCB/designs
 
 ####################################################################################
 

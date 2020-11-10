@@ -32,9 +32,20 @@ def register_view(request):
             password = form.cleaned_data['password1']
 
             user = authenticate(username=username, password=password)
+            print("User id is",user.id)
+            account = models.Account(user = user)
+            account.save()
             login(request, user)
             return redirect('home')
 
     context = {'form': form}
 
     return render(request, 'registration/register.html', context)
+
+
+def design_view(request, designid):
+    design = models.Design.objects.get(id=designid)
+    context = {
+        'design': design
+    }
+    return render(request, 'WEB/design_detail.html', context)

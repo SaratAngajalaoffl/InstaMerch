@@ -82,9 +82,9 @@ WSGI_APPLICATION = 'InstaMerch.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':  "postgres",
+        'NAME':  "instamerch",
         'USER':  "postgres",
-        'PASSWORD':  "chandrasar",
+        'PASSWORD': "chandrasar",
         'HOST': 'localhost'
     }
 }
