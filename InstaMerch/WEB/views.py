@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 import WEB.forms as forms
 import API.models as models
-
+import WEB.models as web_models
 
 def home_view(request):
 
@@ -34,7 +34,9 @@ def register_view(request):
             user = authenticate(username=username, password=password)
             print("User id is",user.id)
             account = models.Account(user = user)
+            cart = web_models.Cart(account = account)
             account.save()
+            cart.save()
             login(request, user)
             return redirect('home')
 
