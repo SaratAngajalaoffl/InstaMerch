@@ -1,4 +1,4 @@
-GET http://localhost:8000/api/Sampath/designs
+GET http://localhost:8000/api/Sarat/designs
 
 ####################################################################################
 
@@ -14,6 +14,10 @@ Content-Type: application/json
         {
             "product_id" : 1,
             "qty" : 1 
+        },
+        {
+            "product_id" : 2,
+            "qty" : 2 
         }
     ],
     "address": {

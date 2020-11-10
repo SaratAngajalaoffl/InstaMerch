@@ -25,20 +25,24 @@ fetch('/api/config/')
 					'X-CSRFToken': getCookie('csrftoken'),
 				},
 				body: JSON.stringify({
-                    products: [
-                        {
-                            product_id = 1,
-                            qty = 1 
-                        }
-                    ],
-                    address: {
-                        address_line1 : "Flat no:401",
-                        address_line2 : "Satya Castle,Shanti Nagar",
-                        state : "Andhra Pradesh",
-                        city : "Visakhapatnam",
-                        country : "India",
-                        pincode : "530009",
-                    },
+					products: [
+						{
+							product_id: 1,
+							qty: 1,
+						},
+						{
+							product_id: 2,
+							qty: 3,
+						},
+					],
+					address: {
+						address_line1: 'Times Square',
+						address_line2: 'Satya Castle,Shanti Nagar',
+						state: 'Andhra Pradesh',
+						city: 'Visakhapatnam',
+						country: 'India',
+						pincode: '530009',
+					},
 					success_url: 'http://localhost:8000/',
 					cancelled_url: 'http://localhost:8000/',
 				}),
