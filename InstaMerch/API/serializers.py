@@ -16,10 +16,5 @@ class Orders_serializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Order
-        fields = ['id', 'products', 'placed_on',
-                  
-                  
-                  
-                  
-                  'status', 'address', 'session_id']
+        fields = ['id', 'products', 'placed_on','status', 'address', 'session_id']
         depth = 2

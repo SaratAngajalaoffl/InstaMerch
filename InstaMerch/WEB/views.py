@@ -52,7 +52,6 @@ def register_view(request):
             password = form.cleaned_data['password1']
 
             user = authenticate(username=username, password=password)
-            print("User id is",user.id)
             account = models.Account(user = user)
             cart = web_models.Cart(account = account)
             account.save()
