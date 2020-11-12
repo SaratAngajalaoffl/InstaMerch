@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -83,8 +86,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME':  "instamerch",
-        'USER':  "postgres",
-        'PASSWORD': "chandrasar",
+        'USER':  os.getenv("DATABASE_USER"),
+        'PASSWORD': os.getenv("DATABASE_PASSWORD"),
         'HOST': 'localhost'
     }
 }
@@ -134,10 +137,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'API/media')
 
 STATICFILES_DIRS = [Path(BASE_DIR).joinpath('static')]
 
-STRIPE_PUBLISHABLE_KEY = 'pk_test_51HdApdJataoePjzdaKSzzmEn9Om5eGUuuPmMSZ8IQIjOFhouLnfJoOoDUjRV6zsvHRAN2itovaR2wFc7sHIFBnUj00vvki6H4v'
-STRIPE_SECRET_KEY = 'sk_test_51HdApdJataoePjzdui0kaoZ8d9mW6RlQ5FNVWXSNScl8p2iAjrUdr2WXwINokJAQbv4qKWmgLiXiYv90tZpmnFgf00kd1gblXl'
+STRIPE_PUBLISHABLE_KEY = os.getenv("STRIPE_P_KEY")
+STRIPE_SECRET_KEY = os.getenv("STRIPE_S_KEY")
 
-STRIPE_ENDPOINT_SECRET = 'whsec_m1lYFL086RnRawI9UhFXClMmmSYWDMgI'
+STRIPE_ENDPOINT_SECRET = os.getenv("WEBHOOK_SECRET")
 
 CORS_ORIGIN_WHITELIST = 'http://localhost:8000',
 

@@ -28,7 +28,7 @@
 	<div class="content-header">Featured Collections</div>
 	<div class="content-body">
 		{% for design in featured %}
-		<a class="content-product no-style" href="/">
+		<a class="content-product no-style" href="/designs/{{design.id}}">
 			<div class="product-img">
 				<img
 					src="{{ design.picture.url }}"
@@ -50,7 +50,7 @@
 	<div class="content-header">Best Sellers</div>
 	<div class="content-body">
 		{% for design in bestsellers %}
-		<a class="content-product no-style" href="/">
+		<a class="content-product no-style" href="/designs/{{design.id}}">
 			<div class="product-img">
 				<img
 					src="{{ design.picture.url }}"
