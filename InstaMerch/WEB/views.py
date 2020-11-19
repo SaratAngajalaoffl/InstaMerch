@@ -20,16 +20,13 @@ def home_view(request):
         timedelta = design.createdon - datetime.date.today()
         if timedelta.days < 10:
             recent.append(design)
-        
-        if len(recent) == 6:
-            break 
 
     bestsellers = sorted(designs,key = lambda design:design.purchases)[::-1][:6]
 
     context = {
         "user": request.user,
-        'featured': featured,
-        'recent': recent,
+        'featured': featured[:6],
+        'recent': recent[:6],
         'bestsellers':bestsellers
     }
 
@@ -57,7 +54,7 @@ def register_view(request):
             account.save()
             cart.save()
             login(request, user)
-            return redirect('home')
+            return redirect('add_profile_pic')
 
     context = {'form': form}
 
@@ -70,3 +67,18 @@ def design_view(request, designid):
         'design': design
     }
     return render(request, 'WEB/design_detail.html', context)
+
+
+@login_required(login_url='/accounts/login')
+def add_profile_pic(request):
+    if request.method == 'POST':
+        data = request.FILES
+        account = models.Account.objects.get(user = request.user)
+        account.picture = data['profilepic']
+        account.save()
+        return redirect('home')
+    return render(request,'WEB/add_profile_picture.html')
+
+@login_required(login_url='/accounts/login')
+def post_design_view(request):
+    return render(request,'WEB/post_design.html')

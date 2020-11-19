@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>InstaMerch</title>
+		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+	</head>
+	<body class="add-profile_main">
+		<div class="image-container">
+			<h1 class="form-header">Add Your Profile Picture</h1>
+
+			<main class="main_full">
+				<div class="container">
+					<div class="panel">
+						<div class="button_outer">
+							<div class="btn_upload">
+								<form
+									id="image-form"
+									action="{% url 'add_profile_pic' %}"
+									method="post"
+									enctype="multipart/form-data"
+								>
+									{% csrf_token %}
+									<input
+										type="file"
+										id="upload_file"
+										name="profilepic"
+									/>
+								</form>
+								Upload Image
+							</div>
+							<div class="processing_bar"></div>
+							<div class="success_box"></div>
+						</div>
+					</div>
+					<div class="error_msg"></div>
+					<div class="uploaded_file_view" id="uploaded_view">
+						<span class="file_remove">X</span>
+					</div>
+					<button id="submit-btn">Set Picture</button>
+				</div>
+			</main>
+
+			<a href="{% url 'home' %}" class="skip-btn">Skip</a>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script>
+			var btnUpload = $('#upload_file'),
+				btnOuter = $('.button_outer'),
+				submitbtn = $('#submit-btn');
+			btnUpload.on('change', function (e) {
+				var ext = btnUpload.val().split('.').pop().toLowerCase();
+				if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+					$('.error_msg').text('Not an Image...');
+				} else {
+					$('.error_msg').text('');
+					btnOuter.addClass('file_uploading');
+					setTimeout(function () {
+						btnOuter.addClass('file_uploaded');
+						submitbtn.addClass('show');
+					}, 1000);
+					var uploadedFile = URL.createObjectURL(e.target.files[0]);
+					setTimeout(function () {
+						$('#uploaded_view')
+							.append(
+								'<img src="' +
+									uploadedFile +
+									'" width="200px" height="200px" />'
+							)
+							.addClass('show');
+					}, 1500);
+				}
+			});
+			submitbtn.on('click', function (e) {
+				$('#image-form').submit();
+			});
+			$('.file_remove').on('click', function (e) {
+				$('#uploaded_view').removeClass('show');
+				$('#uploaded_view').find('img').remove();
+				btnOuter.removeClass('file_uploading');
+				btnOuter.removeClass('file_uploaded');
+				submitbtn.removeClass('show');
+			});
+		</script>
+	</body>
+</html>

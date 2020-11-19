@@ -1,6 +1,3 @@
-console.log('Sanity check!');
-console.log(document.cookie);
-
 function getCookie(name) {
 	const value = `; ${document.cookie}`;
 	const parts = value.split(`; ${name}=`);

@@ -2,6 +2,7 @@
 
 <div class="hero_image_container"></div>
 
+<a id="add-post" href="{% url 'post-design' %}" class="post-design"> + </a>
 <div class="content-block">
 	<div class="content-header">Latest Collections</div>
 	<div class="content-body">
@@ -67,6 +68,49 @@
 			</div>
 		</a>
 		{% endfor %}
+	</div>
+</div>
+<div class="footer">
+	<h1 class="logo">InstaMerch</h1>
+	<section id="social-media">
+		<div class="container text-center">
+			<p>FOLLOW US ON SOCIAL MEDIA</p>
+			<div class="social-icons">
+				<a href="https://www.facebook.com/"
+					><img src="{% static 'images/fb.png' %}"
+				/></a>
+				<a href="https://www.linkedin.com/login"
+					><img src="{% static 'images/linkedin.png' %}"
+				/></a>
+				<a href="https://www.instagram.com/accounts/login/?hl=en"
+					><img src="{% static 'images/instagram.png' %}"
+				/></a>
+			</div>
+		</div>
+	</section>
+
+	<div class="trademark">
+		<p class="copyright">
+			Website Designed By
+			<a>InstaMerch Team</a>
+		</p>
+	</div>
+
+	<div class="zoom">
+		<a href="/">
+			<img
+				src="{% static '/images/Up.png' %}"
+				style="
+					width: 80px;
+					height: 80px;
+					border: 0;
+					float: right;
+					font-size: 15px;
+				"
+		/></a>
+		<div class="mask flex-center">
+			<p class="text">Click Here To Go Up</p>
+		</div>
 	</div>
 </div>
 {% endblock content %}

@@ -35,30 +35,16 @@
 					>
 					<!-- prettier-ignore -->
 					<a href="/" class="navlinks no-style">
-						<img 
-						class="avatar" 
-						{% if user.account.picture %} 
-						src="{{user.account.picture.url }}" 
-						{% else %}
-						src="{% static 'images/avatar.png' %}" 
-						{% endif %}
-						alt="{{user.account.picture}}" />
+						<img
+							class="avatar"
+							src="{{user.account.picture.url }}"
+							alt="{{user.account.picture}}"
+						/>
 					</a>
 				</div>
 				{% endif %}
 			</div>
 		</div>
 		{% block content %}{% endblock content %}
-		<div class="footer">
-			<h1 class="logo">InstaMerch</h1>
-			<div class="links">
-				<i class="fa fa-instagram" style="font-size: 30px"></i>
-				<i class="fa fa-facebook" style="font-size: 30px"></i>
-				<i class="fa fa-envelope" style="font-size: 30px"></i>
-			</div>
-			<div class="trademark">
-				@Lorem ipsum dolor, sit amet consectetur adipisicing.
-			</div>
-		</div>
 	</body>
 </html>

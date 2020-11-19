@@ -142,7 +142,23 @@ STRIPE_SECRET_KEY = os.getenv("STRIPE_S_KEY")
 
 STRIPE_ENDPOINT_SECRET = os.getenv("WEBHOOK_SECRET")
 
-CORS_ORIGIN_WHITELIST = 'http://localhost:8000',
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost:8080",
+    "http://localhost:5500",
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:8080",
+    "http://127.0.0.1:5500",
+]
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
+
+# smtp settings
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'saratangajala@gmail.com'
+EMAIL_HOST_PASSWORD = 'chandrasar'
+EMAIL_PORT = 587

@@ -61,7 +61,6 @@ def api_post_order(request):
                 }
         items.append(item)
 
-    domain_url = 'http://localhost:8000/'
     stripe.api_key = settings.STRIPE_SECRET_KEY
     try:
         checkout_session = stripe.checkout.Session.create(
@@ -80,10 +79,6 @@ def api_post_order(request):
     order.session_id = checkout_session['id']
     order.save()
     serializer = serializers.Orders_serializer(order)
-    # serializer = serializers.Orders_serializer(
-    #     order, data={"session_id": })
-    # if serializer.is_valid():
-    #     serializer.save()
 
     return Response(serializer.data)
 
@@ -104,7 +99,7 @@ def stripe_webhook(request):
     event = None
 
     try:
-        event = stripe.Webhook.construct_event(
+        event = stripe.Webhook.construct_event( 
             payload, sig_header, endpoint_secret
         )
     except ValueError as e:
