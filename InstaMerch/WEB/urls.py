@@ -10,4 +10,6 @@ urlpatterns = [
     path('accounts/add-profile-picture/', views.add_profile_pic, name='add_profile_pic'),
     path('post-design/', views.post_design_view,name='post-design'),
     path('designs/<str:designid>', views.design_view, name='design_detail'),
+    path('cart/',views.show_cart_view,name='cart'),
+    path('add-to-cart/<str:designid>',views.add_to_cart_view,name="add-to-cart")
 ]

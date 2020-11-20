@@ -38,7 +38,7 @@ class Category(models.Model):
 
 
 class Design(models.Model):
-    title = models.CharField(max_length=10)
+    title = models.CharField(max_length=20)
     picture = models.ImageField(upload_to='images/designs')
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     account = models.ForeignKey('Account', on_delete=models.CASCADE)

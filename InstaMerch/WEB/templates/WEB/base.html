@@ -29,7 +29,9 @@
 				{% else %}
 				<div class="left_links">
 					<a href="/" class="navlinks no-style login">Orders</a>
-					<a href="/" class="navlinks no-style login">Cart</a>
+					<a href="{% url 'cart' %}" class="navlinks no-style login"
+						>Cart</a
+					>
 					<a href="{% url 'logout' %}" class="navlinks no-style login"
 						>Logout</a
 					>

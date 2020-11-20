@@ -98,3 +98,26 @@ def post_design_view(request):
         'categories':categories
     }
     return render(request,'WEB/post_design.html',context)
+
+@login_required(login_url='accounts/login')
+def show_cart_view(request):
+    cart = web_models.Cart.objects.get(account=request.user.account)
+    cart_items = cart.item.all()
+
+    context = {
+        'items':cart_items
+    }
+
+    return render(request,'WEB/cart.html',context)
+
+@login_required(login_url='accounts/login')
+def add_to_cart_view(request,designid):
+    design = models.Design.objects.get(id=designid)
+    cart = web_models.Cart.objects.get(account=request.user.account)
+
+    if design not in cart.item.all():
+        cart.item.add(design)
+        cart.save()
+        return redirect('cart')
+    else:
+        return HttpResponse("<h1>Design Already in Cart</h1>")
