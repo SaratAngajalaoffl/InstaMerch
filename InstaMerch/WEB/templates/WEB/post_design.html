@@ -1,11 +1,58 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>InstaMerch</title>
+		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+			integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+			crossorigin="anonymous"
+		/>
 	</head>
-	<body>
-		<h1>This is the post page</h1>
+	<body class="full-background">
+		<div class="image-container">
+			<h1 class="form-header">POST A DESIGN</h1>
+			<form
+				action="{% url 'post-design' %}"
+				method="post"
+				enctype="multipart/form-data"
+				class="post-form"
+			>
+				{% csrf_token %}
+				<div class="form-group row">
+					<div class="offset-1 col-sm-5">
+						<input
+							type="text"
+							class="form-control"
+							name="title"
+							placeholder="Enter Design Title"
+						/>
+					</div>
+					<input
+						class="form-control-file col-sm-4"
+						type="file"
+						id="upload_file"
+						name="designpic"
+					/>
+				</div>
+				<div class="form-group row">
+					<div class="offset-1 col-sm-10">
+						<select class="form-control" name="category">
+							{% for category in categories %}
+							<option>{{ category }}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+
+				<div class="row">
+					<button class="signup offset-4 col-4">POST</button>
+				</div>
+			</form>
+		</div>
 	</body>
 </html>

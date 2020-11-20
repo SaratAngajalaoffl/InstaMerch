@@ -38,6 +38,7 @@ class Category(models.Model):
 
 
 class Design(models.Model):
+    title = models.CharField(max_length=10)
     picture = models.ImageField(upload_to='images/designs')
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     account = models.ForeignKey('Account', on_delete=models.CASCADE)
@@ -46,7 +47,7 @@ class Design(models.Model):
     purchases = models.IntegerField(default=0)
     
     def __str__(self):
-        return self.category.name
+        return self.title
 
 
 class Order(models.Model):

@@ -81,4 +81,20 @@ def add_profile_pic(request):
 
 @login_required(login_url='/accounts/login')
 def post_design_view(request):
-    return render(request,'WEB/post_design.html')
+    if request.method == 'POST':
+        data = request.POST
+        picture = request.FILES
+
+        design = models.Design(
+            title = data['title'],
+            picture = picture['designpic'],
+            category = models.Category.objects.get(name = data['category']),
+            account = request.user.account
+        )
+        design.save()
+        return redirect('home')
+    categories = models.Category.objects.all()
+    context = {
+        'categories':categories
+    }
+    return render(request,'WEB/post_design.html',context)
