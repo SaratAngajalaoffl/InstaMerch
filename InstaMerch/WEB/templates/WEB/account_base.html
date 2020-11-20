@@ -1,0 +1,19 @@
+{% extends 'WEB/base.html' %}
+<!-- prettier-ignore -->
+{% block content %}
+
+<div class="hero_image_container per40">
+	<img
+		class="user-pic-big"
+		src="{{ user.account.picture.url }}"
+		alt=""
+		width="250px"
+		height="250px"
+	/>
+</div>
+<!-- prettier-ignore -->
+<div class="account-content">
+{% block account-content %} {% endblock account-content %}
+</div>
+<!-- prettier-ignore -->
+{% endblock content %}

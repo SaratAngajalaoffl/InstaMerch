@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>InstaMerch</title>
-	</head>
-	<body>
-		{% for item in items %}
-		<h1>{{item}}</h1>
-		{% endfor %}
-	</body>
-</html>
+{% extends 'WEB/account_base.html' %}
+<!-- prettier-ignore -->
+{% block account-content %}
+<h1>User:<em>{{ user }}</em></h1>
+<h1>Items:</h1>
+{% for item in items %}
+<h3>{{item}}</h3>
+{% endfor %}
+<!-- prettier-ignore -->
+{% endblock account-content %}

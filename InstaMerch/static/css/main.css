@@ -25,6 +25,11 @@ a.no-style {
 	background-size: cover;
 }
 
+.hero_image_container.per40 {
+	height: 40%;
+	background-position: -60%;
+}
+
 /* navbar */
 
 .navbar {
@@ -518,4 +523,20 @@ input:focus {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
+}
+
+/* ACCOUNT PAGE */
+
+.user-pic-big {
+	position: relative;
+	top: 50%;
+	left: 10%;
+	border-radius: 50%;
+}
+
+.account-content {
+	background-color: antiquewhite;
+	margin: 100px 50px 10px 50px;
+	padding: 20px;
+	height: 40%;
 }
