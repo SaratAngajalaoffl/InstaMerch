@@ -76,7 +76,7 @@ def add_profile_pic(request):
         account = models.Account.objects.get(user = request.user)
         account.picture = data['profilepic']
         account.save()
-        return redirect('home')
+        return redirect('dashboard')
     return render(request,'WEB/add_profile_picture.html')
 
 @login_required(login_url='/accounts/login')

@@ -3,13 +3,15 @@
 {% block content %}
 
 <div class="hero_image_container per40">
-	<img
-		class="user-pic-big"
-		src="{{ user.account.picture.url }}"
-		alt=""
-		width="250px"
-		height="250px"
-	/>
+	<a href="{% url 'add_profile_pic' %}">
+		<img
+			class="user-pic-big"
+			src="{{ user.account.picture.url }}"
+			alt=""
+			width="250px"
+			height="250px"
+		/>
+	</a>
 </div>
 <div class="account-content">
 	<div class="dashboard-left">
