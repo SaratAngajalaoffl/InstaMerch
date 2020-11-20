@@ -28,7 +28,9 @@
 				</div>
 				{% else %}
 				<div class="left_links">
-					<a href="/" class="navlinks no-style login">Orders</a>
+					<a href="{% url 'orders' %}" class="navlinks no-style login"
+						>Orders</a
+					>
 					<a href="{% url 'cart' %}" class="navlinks no-style login"
 						>Cart</a
 					>

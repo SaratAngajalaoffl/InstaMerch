@@ -1,7 +1,6 @@
 {% extends 'WEB/base.html' %}
 <!-- prettier-ignore -->
 {% block content %}
-
 <div class="hero_image_container per40">
 	<a href="{% url 'add_profile_pic' %}">
 		<img
@@ -20,7 +19,12 @@
 		<p>Contact us @</p>
 		<p><strong>customer.support@instamerch.in</strong></p>
 
-		<a href="/" class="api-ref">API Reference</a>
+		<a
+			href="https://adoring-varahamihira-4cd3e0.netlify.app/"
+			class="api-ref"
+			target="__blank"
+			>API Reference</a
+		>
 		<a href="{% url 'logout' %}" class="logout-button">LOGOUT</a>
 	</div>
 	<div class="dashboard-right">

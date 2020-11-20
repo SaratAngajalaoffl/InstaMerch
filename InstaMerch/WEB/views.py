@@ -125,3 +125,7 @@ def add_to_cart_view(request,designid):
 @login_required(login_url='accounts/login')
 def dashboard_view(request):
     return render(request,'WEB/dashboard.html')
+
+@login_required(login_url='accounts/login')
+def orders_view(request):
+    return render(request,'WEB/orders.html')
