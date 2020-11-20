@@ -555,7 +555,6 @@ input:focus {
 
 .dashboard-right {
 	flex: 5;
-	border: 2px black solid;
 }
 
 .api-ref {
@@ -580,4 +579,15 @@ input:focus {
 	font-size: 30px;
 	font-family: 'Roboto', sans-serif;
 	display: inline-block;
+	font-weight: bold;
+}
+
+.header {
+	position: relative;
+	top: -28%;
+	left: -17%;
+	font-size: 30px;
+	font-family: 'Roboto', sans-serif;
+	display: inline-block;
+	font-weight: bold;
 }

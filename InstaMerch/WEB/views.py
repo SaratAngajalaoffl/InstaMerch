@@ -121,3 +121,7 @@ def add_to_cart_view(request,designid):
         return redirect('cart')
     else:
         return HttpResponse("<h1>Design Already in Cart</h1>")
+
+@login_required(login_url='accounts/login')
+def dashboard_view(request):
+    return render(request,'WEB/dashboard.html')
