@@ -11,9 +11,20 @@
 		height="250px"
 	/>
 </div>
-<!-- prettier-ignore -->
 <div class="account-content">
-{% block account-content %} {% endblock account-content %}
+	<div class="dashboard-left">
+		<p><strong>{{request.user}}</strong></p>
+		<p><strong>{{request.user.email}}</strong></p>
+		<p>Contact us @</p>
+		<p><strong>customer.support@instamerch.in</strong></p>
+
+		<a href="/" class="api-ref">API Reference</a>
+		<a href="{% url 'logout' %}" class="logout-button">LOGOUT</a>
+	</div>
+	<div class="dashboard-right">
+		<div class="credits">Credits : 380</div>
+		{% block account-content %} {% endblock account-content %}
+	</div>
 </div>
 <!-- prettier-ignore -->
 {% endblock content %}

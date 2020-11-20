@@ -535,8 +535,49 @@ input:focus {
 }
 
 .account-content {
-	background-color: antiquewhite;
 	margin: 100px 50px 10px 50px;
 	padding: 20px;
 	height: 40%;
+	display: flex;
+	flex-direction: row;
+}
+
+.dashboard-left {
+	flex: 2;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: light;
+	align-items: center;
+}
+
+.dashboard-right {
+	flex: 5;
+	border: 2px black solid;
+}
+
+.api-ref {
+	color: black !important;
+}
+
+.logout-button {
+	background-color: black;
+	color: white;
+	font-family: 'Architects Daughter', cursive;
+	margin-top: 20px;
+	padding: 10px;
+	font-size: 20px;
+	border-radius: 10px;
+	text-decoration: none !important;
+}
+
+.credits {
+	position: relative;
+	top: -30%;
+	left: 85%;
+	font-size: 30px;
+	font-family: 'Roboto', sans-serif;
+	display: inline-block;
 }
