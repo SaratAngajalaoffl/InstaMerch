@@ -630,6 +630,8 @@ input:focus {
 	margin-right: 50px;
 	border: 2px black solid;
 	border-radius: 10px;
+	padding: 10px;
+
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -657,12 +659,10 @@ input:focus {
 
 .details {
 	flex: 1;
-	padding: 10px;
 }
 
 .image {
 	vertical-align: center;
-	padding-top: 15px;
 }
 
 .image-inner {

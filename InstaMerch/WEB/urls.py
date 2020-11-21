@@ -9,10 +9,12 @@ urlpatterns = [
     path('accounts/register/', views.register_view, name='register'),
     path('accounts/add-profile-picture/', views.add_profile_pic, name='add_profile_pic'),
     path('post-design/', views.post_design_view,name='post-design'),
-    path('designs/<str:designid>', views.design_view, name='design_detail'),
+    path('design/<str:designid>', views.design_view, name='design_detail'),
     path('cart/',views.show_cart_view,name='cart'),
     path('add-to-cart/<str:designid>',views.add_to_cart_view,name="add-to-cart"),
     path('remove-from-cart/<str:designid>',views.remove_from_cart_view,name="add-to-cart"),
     path('dashboard/',views.dashboard_view,name='dashboard'),
     path('orders/',views.orders_view,name='orders'),
+    path('manage-addresses/',views.manage_addresses_view,name='manage-addresses'),
+    path('my-designs/',views.designs_view,name='my-designs')
 ]

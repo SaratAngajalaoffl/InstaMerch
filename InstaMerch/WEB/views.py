@@ -146,3 +146,13 @@ def dashboard_view(request):
 @login_required(login_url='accounts/login')
 def orders_view(request):
     return render(request,'WEB/orders.html')
+
+@login_required(login_url='accounts/login')
+def manage_addresses_view(request):
+    context = {}
+    return render(request,'WEB/addresses.html',context)
+
+@login_required(login_url='accounts/login')
+def designs_view(request):
+    context = {}
+    return render(request,'WEB/designs.html',context)

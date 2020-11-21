@@ -1,4 +1,4 @@
-{% extends 'WEB/account_base.html' %}
+{% extends 'WEB/account_base.html' %} {% load static %}
 <!-- prettier-ignore -->
 {% block header %}
 
@@ -27,8 +27,32 @@
 				</div>
 			</a>
 		</div>
+		<div class="dashboard-horizontal">
+			<a href="{% url 'manage-addresses' %}" class="no-style">
+				<div class="inner-box">
+					<i
+						class="fa fa-address-card-o fa-2x"
+						aria-hidden="true"
+					></i>
+					<p>Manage Saved Addresses</p>
+				</div>
+			</a>
+		</div>
 	</div>
 	<div class="dashboard-vertical">
+		<div class="dashboard-horizontal">
+			<a href="{% url 'my-designs' %}" class="no-style">
+				<div class="inner-box">
+					<img
+						src="{% static 'images/shirt.svg' %}"
+						alt="Designs"
+						width="30px"
+						height="30px"
+					/>
+					<p>My Designs</p>
+				</div>
+			</a>
+		</div>
 		<div class="dashboard-horizontal">
 			<a href="{% url 'post-design' %}" class="no-style">
 				<div class="inner-box">
