@@ -34,13 +34,16 @@ def api_get_order_status(request, orderid):
 def api_post_order(request):
 
     data = request.data
+
     address = models.Address(
+        name = data['address']["name"],
         address_line1 = data['address']["address_line1"],
         address_line2 = data['address']["address_line2"],
         state = data['address']["state"],
         city = data['address']["city"],
         country = data['address']["country"],
-        pincode = data['address']["pincode"]
+        pincode = data['address']["pincode"],
+        telephone = data['address']["telephone"]
     )
     address.save()
     if 'account' in data['address']:
@@ -74,6 +77,8 @@ def api_post_order(request):
         return JsonResponse({'error': str(e)})
 
     order = models.Order(address=address)
+    if 'account' in data['address']:
+        order.account = address.account
     order.save()
     order.products.set(products)
     order.session_id = checkout_session['id']

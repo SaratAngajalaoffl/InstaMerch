@@ -4,7 +4,6 @@ import WEB.views as views
 
 urlpatterns = [
     path('', views.home_view, name='home'),
-    path('purchase/', views.purchase_view, name="purchase"),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/register/', views.register_view, name='register'),
     path('accounts/add-profile-picture/', views.add_profile_pic, name='add_profile_pic'),
@@ -19,4 +18,6 @@ urlpatterns = [
     path('my-designs/',views.designs_view,name='my-designs'),
     path('delete-design/<str:designid>',views.delete_design_view,name='delete-design'),
     path('accounts/settings',views.settings_view,name='settings'),
+    path('add-address/',views.add_address_view,name='add-address'),
+    path('purchase/<str:designid>',views.purchase_view,name='purchase')
 ]

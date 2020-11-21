@@ -3,10 +3,12 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
 import WEB.forms as forms
 import API.models as models
 import WEB.models as web_models
 import datetime
+import stripe
 
 def home_view(request):
 
@@ -33,8 +35,57 @@ def home_view(request):
     return render(request, 'WEB/home.html', context)
 
 
-def purchase_view(request):
-    return render(request, 'WEB/purchase.html')
+def purchase_view(request,designid):
+
+    if request.method == 'POST':
+        data = request.POST
+
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+
+        product = models.Design.objects.get(id=designid)
+        address = models.Address.objects.get(id=data['address'])
+        
+        items = [
+            {
+                    'name': product.title,
+                    'quantity': data['qty'],
+                    'currency': 'inr',
+                    'amount': product.category.price,
+            }
+        ]
+        
+        try:
+            checkout_session = stripe.checkout.Session.create(
+                success_url="http://localhost:8000/orders",
+                cancel_url="http://localhost:8000/orders",
+                payment_method_types=['card'],
+                mode='payment',
+                line_items=items
+            )
+        except Exception as e:
+            return JsonResponse({'error': str(e)})
+            
+        order = models.Order(address=address)
+        
+        if 'account' in data['address']:
+            order.account = address.account
+
+        order.save()
+        order.products.set([product])
+        order.session_id = checkout_session['id']
+        order.save()
+
+        context = {
+            "session_id" : checkout_session.id
+        }    
+
+        return render(request,'WEB/stripe_redirect.html',context)
+        
+    context = {
+        'addresses':request.user.account.address_set.all(),
+        'designid':designid
+    }
+    return render(request, 'WEB/purchase.html',context)
 
 
 def register_view(request):
@@ -148,8 +199,10 @@ def orders_view(request):
     return render(request,'WEB/orders.html')
 
 @login_required(login_url='accounts/login')
-def manage_addresses_view(request):
-    context = {}
+def manage_addresses_view(request):    
+    context = {
+        'addresses':request.user.account.address_set.all()
+    }
     return render(request,'WEB/addresses.html',context)
 
 @login_required(login_url='accounts/login')
@@ -173,3 +226,27 @@ def delete_design_view(request,designid):
 def settings_view(request):
     context = {}
     return render(request,'WEB/account-settings.html',context)
+
+
+@login_required(login_url='accounts/login')
+def add_address_view(request):
+
+    if request.method == 'POST':
+        data = request.POST
+
+        address = models.Address(
+            name = data['name'],
+            address_line1 = data['address_line1'],
+            address_line2 = data['address_line2'],
+            state = data['state'],
+            city = data['city'],
+            country = data['country'],
+            pincode = data['pincode'],
+            telephone = data['telephone'],
+            account = request.user.account
+        )
+        address.save()
+        return redirect('manage-addresses')
+    
+    context = {}
+    return render(request,'WEB/add_address.html',context)

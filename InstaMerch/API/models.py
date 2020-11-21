@@ -18,16 +18,18 @@ class Account(models.Model):
 
 
 class Address(models.Model):
+    name = models.CharField(max_length=30)
     address_line1 = models.CharField(max_length=50)
     address_line2 = models.CharField(max_length=50)
     state = models.CharField(max_length=20)
     city = models.CharField(max_length=20)
     country = models.CharField(max_length=50)
     pincode = models.CharField(max_length=20)
+    telephone = models.CharField(max_length=20)
     account = models.ForeignKey('Account', on_delete=models.PROTECT, null=True, blank=True)
 
     def __str__(self):
-        return self.address_line1
+        return self.name 
 
 
 class Category(models.Model):

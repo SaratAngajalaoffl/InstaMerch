@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>InstaMerch</title>
+		<script src="https://js.stripe.com/v3/"></script>
+	</head>
+	<body>
+		<script>
+			function getCookie(name) {
+				const value = `; ${document.cookie}`;
+				const parts = value.split(`; ${name}=`);
+				if (parts.length === 2) return parts.pop().split(';').shift();
+			}
+
+			fetch('/api/config/')
+				.then((result) => {
+					return result.json();
+				})
+				.then((data) => {
+					const stripe = Stripe(data.publicKey);
+
+					return stripe.redirectToCheckout({
+						sessionId: '{{session_id}}',
+					});
+				});
+		</script>
+	</body>
+</html>

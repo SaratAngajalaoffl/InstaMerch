@@ -10,8 +10,29 @@
 <!-- prettier-ignore -->
 {% block account-content %}
 <div class="addresses">
-	<div class="orders">
-		<h1>No Addresses added yet</h1>
+	{% if addresses %}
+
+	<!-- prettier-ignore -->
+	{% for item in addresses %}
+
+	<ul>
+		<li>{{item.name}}</li>
+		<li>{{item.address_line1}}</li>
+		<li>{{item.address_line2}}</li>
+		<li>{{item.state}}</li>
+		<li>{{item.city}}</li>
+		<li>{{item.country}}</li>
+		<li>{{item.pincode}}</li>
+		<li>{{item.telephone}}</li>
+	</ul>
+
+	{% endfor %} {% else %}
+	<h1>No Addresses added Yet</h1>
+	{% endif %}
+	<div class="cart-checkout-button-container">
+		<a href="{% url 'add-address' %}" class="cart-checkout-button"
+			>Add new Address</a
+		>
 	</div>
 </div>
 <!-- prettier-ignore -->

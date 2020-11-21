@@ -695,3 +695,11 @@ h3.no-margin {
 	width: 100%;
 	height: 100%;
 }
+
+/* Manage Addresses Page */
+
+.addresses {
+	overflow: scroll;
+	width: 100%;
+	height: 100%;
+}
