@@ -8,6 +8,7 @@ class Account(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     picture = models.ImageField(
         upload_to='images/profile_pics', blank=True, null=True,default="images/profile_pics/avatar.png")
+    credits = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.user.username

@@ -1,23 +1,22 @@
 {% extends 'WEB/base.html' %}
 <!-- prettier-ignore -->
 {% block content %}
-<div class="hero_image_container per40">
-	<a href="{% url 'add_profile_pic' %}">
-		<img
-			class="user-pic-big"
-			src="{{ user.account.picture.url }}"
-			alt=""
-			width="250px"
-			height="250px"
-		/>
-	</a>
-</div>
+<div class="hero_image_container per40"></div>
 <div class="account-content">
 	<div class="dashboard-left">
-		<p><strong>{{request.user}}</strong></p>
-		<p><strong>{{request.user.email}}</strong></p>
-		<p>Contact us @</p>
-		<p><strong>customer.support@instamerch.in</strong></p>
+		<a href="{% url 'add_profile_pic' %}" class="user-pic-big">
+			<img
+				class="user-img"
+				src="{{ user.account.picture.url }}"
+				alt=""
+				width="250px"
+				height="250px"
+			/>
+		</a>
+		<div><strong>{{request.user}}</strong></div>
+		<div><strong>{{request.user.email}}</strong></div>
+		<div><p>Contact us @</p></div>
+		<div><strong>customer.support@instamerch.in</strong></div>
 
 		<a
 			href="https://adoring-varahamihira-4cd3e0.netlify.app/"
@@ -27,9 +26,14 @@
 		>
 		<a href="{% url 'logout' %}" class="logout-button">LOGOUT</a>
 	</div>
-	<div class="dashboard-right">
-		<div class="credits">Credits : 380</div>
-		{% block account-content %} {% endblock account-content %}
+	<div class="account-right">
+		<div class="account-right-top">
+			<h1>{% block header %} {% endblock header %}</h1>
+			<h1 class="credits">Credits : {{user.account.credits}}</h1>
+		</div>
+		<div class="account-right-bottom">
+			{% block account-content %} {% endblock account-content %}
+		</div>
 	</div>
 </div>
 <!-- prettier-ignore -->

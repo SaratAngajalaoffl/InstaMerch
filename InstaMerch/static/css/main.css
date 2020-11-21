@@ -527,34 +527,31 @@ input:focus {
 
 /* ACCOUNT PAGE */
 
-.user-pic-big {
-	position: relative;
-	top: 50%;
-	left: 10%;
-	border-radius: 50%;
-}
-
 .account-content {
-	margin: 100px 50px 10px 50px;
-	padding: 20px;
-	height: 40%;
+	height: 60%;
 	display: flex;
 	flex-direction: row;
 }
 
 .dashboard-left {
-	flex: 2;
-	text-align: center;
+	position: relative;
+	flex: 1;
+	font-family: 'Montserrat', sans-serif;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: light;
+	text-align: center;
 	align-items: center;
+	justify-content: space-evenly;
+	padding-top: 125px;
 }
 
-.dashboard-right {
-	flex: 5;
+.user-pic-big {
+	position: absolute;
+	top: -125px;
+}
+
+.user-img {
+	border-radius: 50%;
 }
 
 .api-ref {
@@ -572,22 +569,49 @@ input:focus {
 	text-decoration: none !important;
 }
 
-.credits {
-	position: relative;
-	top: -30%;
-	left: 85%;
-	font-size: 30px;
-	font-family: 'Roboto', sans-serif;
-	display: inline-block;
-	font-weight: bold;
+.account-right {
+	flex: 2;
+	display: flex;
+	flex-direction: column;
 }
 
-.header {
-	position: relative;
-	top: -28%;
-	left: -17%;
-	font-size: 30px;
-	font-family: 'Roboto', sans-serif;
-	display: inline-block;
-	font-weight: bold;
+.account-right-top {
+	padding-right: 50px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.account-right-bottom {
+	flex: 1;
+}
+
+.dashboard {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.dashboard-vertical {
+	flex: 1;
+	display: flex;
+	flex-direction: row;
+}
+
+.dashboard-horizontal {
+	flex: 1;
+	padding: 40px;
+}
+
+.inner-box {
+	width: 90%;
+	height: 90%;
+	border: 2px black solid;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	font-family: 'Architects Daughter', cursive;
+	font-weight: bolder;
 }

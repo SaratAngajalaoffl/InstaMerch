@@ -1,8 +1,51 @@
 {% extends 'WEB/account_base.html' %}
 <!-- prettier-ignore -->
-{% block account-content %}
+{% block header %}
 
 <div class="header">My Dashboard</div>
 
+<!-- prettier-ignore -->
+{% endblock header %}
+
+<!-- prettier-ignore -->
+{% block account-content %}
+<div class="dashboard">
+	<div class="dashboard-vertical">
+		<div class="dashboard-horizontal">
+			<a href="{% url 'cart' %}" class="no-style">
+				<div class="inner-box">
+					<i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+					<p>Go to Cart</p>
+				</div>
+			</a>
+		</div>
+		<div class="dashboard-horizontal">
+			<a href="{% url 'orders' %}" class="no-style">
+				<div class="inner-box">
+					<i class="fa fa-credit-card fa-2x" aria-hidden="true"></i>
+					<p>Go to Orders</p>
+				</div>
+			</a>
+		</div>
+	</div>
+	<div class="dashboard-vertical">
+		<div class="dashboard-horizontal">
+			<a href="{% url 'post-design' %}" class="no-style">
+				<div class="inner-box">
+					<i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+					<p>POST DESIGN</p>
+				</div>
+			</a>
+		</div>
+		<div class="dashboard-horizontal">
+			<a href="/" class="no-style">
+				<div class="inner-box">
+					<i class="fa fa-cog fa-2x" aria-hidden="true"></i>
+					<p>Account Settings</p>
+				</div>
+			</a>
+		</div>
+	</div>
+</div>
 <!-- prettier-ignore -->
 {% endblock account-content %}

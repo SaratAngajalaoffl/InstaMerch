@@ -1,7 +1,14 @@
 {% extends 'WEB/account_base.html' %}
 <!-- prettier-ignore -->
-{% block account-content %}
+{% block header %}
+
 <div class="header">My Cart</div>
+
+<!-- prettier-ignore -->
+{% endblock header %}
+
+<!-- prettier-ignore -->
+{% block account-content %}
 
 {% for item in items %}
 <h3>{{item}}</h3>
