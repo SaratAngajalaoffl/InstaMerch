@@ -2,7 +2,12 @@
 <!-- prettier-ignore -->
 {% block header %}
 
-<div class="header">My Cart</div>
+<div class="header">
+	My Cart
+	<em style="font-weight: 400 !important"
+		>Total: ₹&nbsp{{total|stringformat:"i"|slice:":-2"}}</em
+	>
+</div>
 
 <!-- prettier-ignore -->
 {% endblock header %}
@@ -10,8 +15,39 @@
 <!-- prettier-ignore -->
 {% block account-content %}
 
-{% for item in items %}
-<h3>{{item}}</h3>
-{% endfor %}
+<div class="cart">
+	{% for item in items %}
+
+	<div class="cart-item">
+		<div class="details">
+			<a href="/designs/{{item.id}}" class="no-style">
+				<h3>{{item}}</h3>
+			</a>
+			<p>
+				Price :
+				₹&nbsp{{item.category.price|stringformat:"i"|slice:":-2"}}
+			</p>
+			<a href="/remove-from-cart/{{item.id}}" class="no-style">delete</a>
+		</div>
+		<div class="image">
+			<a href="/designs/{{item.id}}" class="no-style">
+				<img
+					class="image-inner"
+					src="{{item.picture.url}}"
+					alt="{{item.name}}"
+					width="100px"
+					height="100px"
+				/>
+			</a>
+		</div>
+	</div>
+
+	{% endfor %}
+
+	<div class="cart-checkout-button-container">
+		<button class="cart-checkout-button">Checkout</button>
+	</div>
+</div>
+<!-- Hi -->
 <!-- prettier-ignore -->
 {% endblock account-content %}

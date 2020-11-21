@@ -104,8 +104,14 @@ def show_cart_view(request):
     cart = web_models.Cart.objects.get(account=request.user.account)
     cart_items = cart.item.all()
 
+    total = 0
+
+    for item in cart_items:
+        total += item.category.price
+    
     context = {
-        'items':cart_items
+        'items':cart_items,
+        'total':total
     }
 
     return render(request,'WEB/cart.html',context)
@@ -121,6 +127,17 @@ def add_to_cart_view(request,designid):
         return redirect('cart')
     else:
         return HttpResponse("<h1>Design Already in Cart</h1>")
+
+@login_required(login_url='accounts/login')
+def remove_from_cart_view(request,designid):
+    design = models.Design.objects.get(id=designid)
+    cart = web_models.Cart.objects.get(account=request.user.account)
+
+    if design in cart.item.all():
+        cart.item.remove(design)
+        return redirect('cart')
+    else:
+        return HttpResponse("<h1>Item not in Cart</h1>")
 
 @login_required(login_url='accounts/login')
 def dashboard_view(request):
