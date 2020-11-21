@@ -17,5 +17,6 @@ urlpatterns = [
     path('orders/',views.orders_view,name='orders'),
     path('manage-addresses/',views.manage_addresses_view,name='manage-addresses'),
     path('my-designs/',views.designs_view,name='my-designs'),
-    path('delete-design/<str:designid>',views.delete_design_view,name='delete-design')
+    path('delete-design/<str:designid>',views.delete_design_view,name='delete-design'),
+    path('accounts/settings',views.settings_view,name='settings'),
 ]

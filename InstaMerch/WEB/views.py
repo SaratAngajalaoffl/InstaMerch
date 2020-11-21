@@ -168,3 +168,8 @@ def delete_design_view(request,designid):
         design.delete()
         return redirect('my-designs')
     return render(request,'WEB/designs.html',context)
+
+@login_required(login_url='accounts/login')
+def settings_view(request):
+    context = {}
+    return render(request,'WEB/account-settings.html',context)
