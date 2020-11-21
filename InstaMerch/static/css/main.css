@@ -687,3 +687,11 @@ h3.no-margin {
 .fa-trash {
 	color: red;
 }
+
+/* My designs Page */
+
+.designs {
+	overflow: scroll;
+	width: 100%;
+	height: 100%;
+}

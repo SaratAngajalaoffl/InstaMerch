@@ -9,6 +9,48 @@
 
 <!-- prettier-ignore -->
 {% block account-content %}
-<div class="addresses"></div>
+<div class="designs">
+	{% if designs %}
+
+	<!-- prettier-ignore -->
+	{% for item in designs %}
+
+	<div class="cart-item">
+		<div class="details">
+			<a href="/design/{{item.id}}" class="no-style">
+				<h3 class="no-margin">{{item}}</h3>
+			</a>
+			<p>
+				Category :
+				<strong>{{item.category}}</strong>
+			</p>
+			<p>
+				Price :
+				₹&nbsp{{item.category.price|stringformat:"i"|slice:":-2"}}
+			</p>
+			<div class="space-apart">
+				<p class="no-margin">Purchases : {{item.purchases}}</p>
+				<a href="/delete-design/{{item.id}}" class="no-style">
+					<i class="fa fa-trash fa-1x" color="white"></i>
+				</a>
+			</div>
+		</div>
+		<div class="image">
+			<a href="/design/{{item.id}}" class="no-style">
+				<img
+					class=""
+					src="{{item.picture.url}}"
+					alt="{{item.name}}"
+					width="120px"
+					height="120px"
+				/>
+			</a>
+		</div>
+	</div>
+	{% endfor %} {% else %}
+	<h1>No designs Yet</h1>
+	{% endif %}
+</div>
+
 <!-- prettier-ignore -->
 {% endblock account-content %}

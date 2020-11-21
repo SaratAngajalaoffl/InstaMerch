@@ -154,5 +154,17 @@ def manage_addresses_view(request):
 
 @login_required(login_url='accounts/login')
 def designs_view(request):
-    context = {}
+    designs = request.user.account.design_set.all()
+    context = {
+        'designs':designs
+    }
+    return render(request,'WEB/designs.html',context)
+
+@login_required(login_url='accounts/login')
+def delete_design_view(request,designid):
+    design = models.Design.objects.get(id=designid)
+
+    if design.account == request.user.account:
+        design.delete()
+        return redirect('my-designs')
     return render(request,'WEB/designs.html',context)
