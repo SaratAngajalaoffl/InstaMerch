@@ -617,6 +617,8 @@ input:focus {
 	font-weight: bolder;
 }
 
+/* CART PAGE */
+
 .cart {
 	overflow: scroll;
 	width: 100%;
@@ -628,7 +630,6 @@ input:focus {
 	margin-right: 50px;
 	border: 2px black solid;
 	border-radius: 10px;
-	padding: 10px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -654,6 +655,35 @@ input:focus {
 	margin-bottom: 20px;
 }
 
+.details {
+	flex: 1;
+	padding: 10px;
+}
+
+.image {
+	vertical-align: center;
+	padding-top: 15px;
+}
+
 .image-inner {
 	border-radius: 50%;
+}
+
+.space-apart {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 95%;
+}
+
+p.no-margin {
+	margin: 0px !important;
+}
+
+h3.no-margin {
+	margin: 0px !important;
+}
+
+.fa-trash {
+	color: red;
 }

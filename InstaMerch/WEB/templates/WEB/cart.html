@@ -1,7 +1,6 @@
 {% extends 'WEB/account_base.html' %}
 <!-- prettier-ignore -->
 {% block header %}
-
 <div class="header">
 	My Cart
 	<em style="font-weight: 400 !important"
@@ -21,13 +20,22 @@
 	<div class="cart-item">
 		<div class="details">
 			<a href="/designs/{{item.id}}" class="no-style">
-				<h3>{{item}}</h3>
+				<h3 class="no-margin">{{item}}</h3>
 			</a>
+			<p>Designer : <strong>{{item.account}}</strong></p>
 			<p>
-				Price :
-				₹&nbsp{{item.category.price|stringformat:"i"|slice:":-2"}}
+				Category :
+				<strong>{{item.category}}</strong>
 			</p>
-			<a href="/remove-from-cart/{{item.id}}" class="no-style">delete</a>
+			<div class="space-apart">
+				<p class="no-margin">
+					Price :
+					₹&nbsp{{item.category.price|stringformat:"i"|slice:":-2"}}
+				</p>
+				<a href="/remove-from-cart/{{item.id}}" class="no-style">
+					<i class="fa fa-trash fa-1x" color="white"></i>
+				</a>
+			</div>
 		</div>
 		<div class="image">
 			<a href="/designs/{{item.id}}" class="no-style">
@@ -35,8 +43,8 @@
 					class="image-inner"
 					src="{{item.picture.url}}"
 					alt="{{item.name}}"
-					width="100px"
-					height="100px"
+					width="120px"
+					height="120px"
 				/>
 			</a>
 		</div>
