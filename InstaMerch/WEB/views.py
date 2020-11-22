@@ -7,6 +7,7 @@ from django.conf import settings
 import WEB.forms as forms
 import API.models as models
 import WEB.models as web_models
+from django.contrib.auth.models import User
 import datetime
 import stripe
 
@@ -306,3 +307,14 @@ def add_address_view(request):
     
     context = {}
     return render(request,'WEB/add_address.html',context)
+
+def user_designs_view(request,username):
+    user = User.objects.get(username=username)
+    account = models.Account.objects.get(user=user)
+
+    context = {
+        'user': account,
+        'designs':account.design_set.all()
+    }
+
+    return render(request,"WEB/user_designs.html",context)

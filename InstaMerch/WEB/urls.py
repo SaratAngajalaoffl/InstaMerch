@@ -21,4 +21,5 @@ urlpatterns = [
     path('add-address/',views.add_address_view,name='add-address'),
     path('purchase/<str:designid>',views.purchase_view,name='purchase'),
     path('cart-checkout/<str:addressid>',views.cart_checkout_view,name='cart-checkout'),
+    path('designs/<str:username>',views.user_designs_view,name='user-designs'),
 ]

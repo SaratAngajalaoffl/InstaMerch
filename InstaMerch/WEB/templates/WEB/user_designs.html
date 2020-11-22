@@ -1,0 +1,76 @@
+{% extends 'WEB/base.html' %}
+
+<!-- prettier-ignore -->
+{% block content %}
+<div class="hero_image_container per40"></div>
+<div class="account-content">
+	<div class="dashboard-left">
+		<a href="{% url 'add_profile_pic' %}" class="user-pic-big">
+			<img
+				class="user-img"
+				src="{{ user.picture.url }}"
+				alt=""
+				width="250px"
+				height="250px"
+			/>
+		</a>
+		<div>
+			<strong>{{user.user.username}}</strong>
+		</div>
+		<div><strong>{{user.user.email}}</strong></div>
+		<div><p>Contact us @</p></div>
+		<div><strong>customer.support@instamerch.in</strong></div>
+
+		<a
+			href="https://adoring-varahamihira-4cd3e0.netlify.app/"
+			class="api-ref"
+			target="__blank"
+			>API Reference</a
+		>
+	</div>
+	<div class="account-right">
+		<div class="account-right-top">
+			<h1>{{user}}'s Designs</h1>
+		</div>
+		<div class="account-right-bottom">
+			<div class="designs">
+				{% if designs %}
+
+				<!-- prettier-ignore -->
+				{% for item in designs %}
+
+				<div class="cart-item">
+					<div class="details">
+						<a href="/design/{{item.id}}" class="no-style">
+							<h3 class="no-margin">{{item}}</h3>
+						</a>
+						<p>
+							Category :
+							<strong>{{item.category}}</strong>
+						</p>
+						<p>
+							Price :
+							₹&nbsp{{item.category.price|stringformat:"i"|slice:":-2"}}
+						</p>
+					</div>
+					<div class="image">
+						<a href="/design/{{item.id}}" class="no-style">
+							<img
+								class=""
+								src="{{item.picture.url}}"
+								alt="{{item.name}}"
+								width="120px"
+								height="120px"
+							/>
+						</a>
+					</div>
+				</div>
+				{% endfor %} {% else %}
+				<h1>No designs Yet</h1>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<!-- prettier-ignore -->
+	{% endblock content %}
+</div>
