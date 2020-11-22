@@ -712,3 +712,11 @@ ul.list-unstyled {
 ul.list-unstyled > li {
 	padding-left: 30px;
 }
+
+/* Orders Page */
+
+.orders {
+	overflow: scroll;
+	width: 100%;
+	height: 100%;
+}

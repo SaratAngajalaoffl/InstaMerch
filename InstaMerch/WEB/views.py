@@ -86,6 +86,54 @@ def purchase_view(request,designid):
     }
     return render(request, 'WEB/purchase.html',context)
 
+@login_required(login_url='/accounts/login')
+def cart_checkout_view(request,addressid):
+
+    cart_items = request.user.account.cart.item.all()
+
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+
+    address = models.Address.objects.get(id=addressid)
+    
+    items = []
+    
+    for item in cart_items:
+        items.append({
+            'name': item.title,
+            'quantity': 1,
+            'currency': 'inr',
+            'amount': item.category.price,
+        })
+    
+    try:
+        checkout_session = stripe.checkout.Session.create(
+            success_url="http://localhost:8000/orders",
+            cancel_url="http://localhost:8000/orders",
+            payment_method_types=['card'],
+            mode='payment',
+            line_items=items
+        )
+
+    except Exception as e:
+        return JsonResponse({'error': str(e)})
+        
+    order = models.Order(address=address)
+
+    request.user.account.cart.item.clear()
+    
+    order.account = address.account
+
+    order.save()
+    order.products.set(cart_items)
+    order.session_id = checkout_session['id']
+    order.save()
+
+    context = {
+        "session_id" : checkout_session.id
+    }    
+
+    return render(request,'WEB/stripe_redirect.html',context)
+
 
 def register_view(request):
     form = forms.CreateUserForm()
@@ -153,6 +201,7 @@ def post_design_view(request):
 def show_cart_view(request):
     cart = web_models.Cart.objects.get(account=request.user.account)
     cart_items = cart.item.all()
+    addresses = request.user.account.address_set.all()
 
     total = 0
 
@@ -161,7 +210,8 @@ def show_cart_view(request):
     
     context = {
         'items':cart_items,
-        'total':total
+        'total':total,
+        'addresses':addresses
     }
 
     return render(request,'WEB/cart.html',context)

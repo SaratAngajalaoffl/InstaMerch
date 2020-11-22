@@ -56,15 +56,35 @@
 
 	{% endfor %}
 
+	<select name="address" id="address">
+		{% for address in addresses %}
+		<option value="{{address.id}}">
+			{{address.name}},{{address.address_line1}}
+		</option>
+		{% endfor %}
+	</select>
+
 	<div class="cart-checkout-button-container">
-		<button class="cart-checkout-button">Checkout</button>
+		<a
+			href="/cart-checkout/{{addresses.0.id}}"
+			id="checkoutBtn"
+			class="cart-checkout-button"
+			>Checkout</a
+		>
 	</div>
 
 	{% else %}
 	<h1>No Items in Cart Yet</h1>
-	{% endif %}
+	{% endif %} {% comment %}
+	<script>
+		checkoutBtn = document.getElementbyId(checkoutBtn)
 
-	<script></script>
+		checkoutBtn.addEventListener('click',function() {
+			document.getElementbyId(address);
+			.href = '/cart-checkout/' + ;
+		})
+	</script>
+	{% endcomment %}
 </div>
 <!-- Hi -->
 <!-- prettier-ignore -->
