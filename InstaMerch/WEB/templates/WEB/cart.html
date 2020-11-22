@@ -74,6 +74,10 @@
 		{% endfor %}
 	</select>
 
+	<a href="{% url 'add-address' %}">
+		<i class="fa fa-plus"></i>
+	</a>
+
 	<div class="cart-checkout-button-container">
 		<a
 			href="/cart-checkout/{{addresses.0.id}}"
@@ -85,16 +89,16 @@
 
 	{% else %}
 	<h1>No Items in Cart Yet</h1>
-	{% endif %} {% comment %}
+	{% endif %}
 	<script>
-		checkoutBtn = document.getElementbyId(checkoutBtn)
+		checkoutBtn = document.getElementById('checkoutBtn');
 
-		checkoutBtn.addEventListener('click',function() {
-			document.getElementbyId(address);
-			.href = '/cart-checkout/' + ;
-		})
+		address = document.getElementById('address');
+
+		address.addEventListener('change', function () {
+			checkoutBtn.href = '/cart-checkout/' + address.value;
+		});
 	</script>
-	{% endcomment %}
 </div>
 <!-- Hi -->
 <!-- prettier-ignore -->
