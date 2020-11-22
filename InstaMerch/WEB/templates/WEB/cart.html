@@ -26,10 +26,20 @@
 			<a href="/design/{{item.id}}" class="no-style">
 				<h3 class="no-margin">{{item}}</h3>
 			</a>
-			<p>Designer : <strong>{{item.account}}</strong></p>
+			<p>
+				Designer :
+				<a
+					class="designer-name"
+					style="color: #3b5998; text-decoration: underline"
+					href="/designs/{{item.account}}"
+					><strong>{{item.account}}</strong></a
+				>
+			</p>
 			<p>
 				Category :
-				<strong>{{item.category}}</strong>
+				<a class="designer-name" href="/category/{{item.category.id}}">
+					<strong>{{item.category}}</strong>
+				</a>
 			</p>
 			<div class="space-apart">
 				<p class="no-margin">
