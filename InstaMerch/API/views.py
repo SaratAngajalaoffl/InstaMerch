@@ -43,7 +43,8 @@ def api_post_order(request):
         city = data['address']["city"],
         country = data['address']["country"],
         pincode = data['address']["pincode"],
-        telephone = data['address']["telephone"]
+        telephone = data['address']["telephone"],
+        account = request.user.account
     )
     address.save()
     if 'account' in data['address']:

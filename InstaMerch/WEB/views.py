@@ -67,8 +67,7 @@ def purchase_view(request,designid):
             
         order = models.Order(address=address)
         
-        if 'account' in data['address']:
-            order.account = address.account
+        order.account = address.account
 
         order.save()
         order.products.set([product])
@@ -196,7 +195,14 @@ def dashboard_view(request):
 
 @login_required(login_url='accounts/login')
 def orders_view(request):
-    return render(request,'WEB/orders.html')
+
+    orders = request.user.account.order_set.all()
+    
+    context = {
+        'orders':orders
+    }
+    
+    return render(request,'WEB/orders.html',context)
 
 @login_required(login_url='accounts/login')
 def manage_addresses_view(request):    

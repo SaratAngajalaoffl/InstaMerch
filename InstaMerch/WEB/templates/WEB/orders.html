@@ -10,7 +10,62 @@
 <!-- prettier-ignore -->
 {% block account-content %}
 <div class="orders">
+	{% if orders %}
+
+	<!-- prettier-ignore -->
+	{% for order in orders %}
+
+	<div class="cart-item">
+		<div class="details">
+			<h3 class="no-margin">Order Id: {{order.id}}</h3>
+
+			<ul class="list-unstyled">
+				Items :
+
+				<!-- prettier-ignore -->
+				{% for item in order.products.all %}
+
+				<li>
+					<strong>{{item}}</strong>
+					<p class="no-margin">
+						Price :
+						₹&nbsp{{item.category.price|stringformat:"i"|slice:":-2"}}
+					</p>
+				</li>
+
+				{% endfor %}
+			</ul>
+
+			<p>
+				Status:
+				<strong>{{order.status}}</strong>
+			</p>
+		</div>
+		<div class="image">
+			{% for item in order.products.all %}
+
+			<a href="/design/{{item.id}}" class="no-style">
+				<img
+					class=""
+					src="{{item.picture.url}}"
+					alt="{{item.name}}"
+					width="120px"
+					height="120px"
+				/>
+			</a>
+			{% endfor %}
+		</div>
+	</div>
+
+	{% endfor %}
+
+	<div class="cart-checkout-button-container">
+		<button class="cart-checkout-button">Checkout</button>
+	</div>
+
+	{% else %}
 	<h1>No Orders Placed Yet</h1>
+	{% endif %}
 </div>
 <!-- prettier-ignore -->
 {% endblock account-content %}
