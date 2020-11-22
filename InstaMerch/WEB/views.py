@@ -309,6 +309,11 @@ def add_address_view(request):
     return render(request,'WEB/add_address.html',context)
 
 def user_designs_view(request,username):
+
+    if request.user.is_authenticated:
+        if request.user.username == username:
+            return redirect('my-designs')
+    
     user = User.objects.get(username=username)
     account = models.Account.objects.get(user=user)
 
@@ -318,3 +323,13 @@ def user_designs_view(request,username):
     }
 
     return render(request,"WEB/user_designs.html",context)
+
+def designs_by_category_view(request,categoryid):
+    category = models.Category.objects.get(id=categoryid)
+
+    context = {
+        'designs':category.design_set.all(),
+        'category':category.name
+    }
+
+    return render(request,'WEB/designs_of_category.html',context)
