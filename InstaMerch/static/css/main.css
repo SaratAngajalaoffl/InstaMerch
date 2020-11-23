@@ -6,6 +6,7 @@ body {
 	margin: 0;
 	padding: 0;
 	height: 100vh;
+	scroll-behavior: smooth;
 }
 
 a.no-style {
@@ -119,7 +120,7 @@ a.no-style {
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-around;
-	background-color: #dddddd;
+	background-color: #eeeeee;
 }
 
 .product-description {
@@ -242,7 +243,7 @@ input:focus {
 .footer {
 	margin-top: 30px;
 	display: flex;
-	background-color: #aaaaaa;
+	background-color: #eeeeee;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-evenly;
@@ -723,4 +724,42 @@ ul.list-unstyled > li {
 
 .header {
 	text-align: center;
+}
+
+/* Settings Page */
+
+.settings {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.black-btn,
+.red-btn {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.black-btn {
+	flex: 1;
+}
+
+.black-btn > a,
+.red-btn > a {
+	color: white;
+	text-decoration: none;
+	text-align: center;
+	margin: 30px;
+	font-size: 30px;
+	border-radius: 10px;
+	width: 40vw;
+}
+
+.red-btn > a {
+	background-color: rgb(159, 12, 12);
+}
+
+.black-btn > a {
+	background-color: black;
 }

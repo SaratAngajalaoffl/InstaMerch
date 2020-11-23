@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
@@ -333,3 +333,23 @@ def designs_by_category_view(request,categoryid):
     }
 
     return render(request,'WEB/designs_of_category.html',context)
+
+def delete_account_view(request):
+    user = request.user
+    user.delete()
+
+    return redirect('home')
+
+def update_password_view(request):
+
+    if request.method == 'POST':
+        data = request.POST
+
+        if data['password1'] == data['password2']:
+            request.user.set_password(data['password1'])
+            request.user.save()
+            return redirect('login')
+        else:
+            return HttpResponse('Passwords Donot Match')
+    
+    return render(request,"WEB/password_change.html")

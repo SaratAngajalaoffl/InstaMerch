@@ -9,7 +9,15 @@
 
 <!-- prettier-ignore -->
 {% block account-content %}
-<div class="settings"></div>
+<div class="settings">
+	<div class="black-btn">
+		<a href="{% url 'add_profile_pic' %}">Update Profile Picture</a>
+		<a href="{% url 'update_password' %}">Update Password</a>
+	</div>
 
+	<div class="red-btn">
+		<a href="{% url 'delete_account' %}">Delete Account</a>
+	</div>
+</div>
 <!-- prettier-ignore -->
 {% endblock account-content %}
