@@ -85,6 +85,13 @@ a.no-style {
 	border-radius: 50%;
 }
 
+#search[type='text'] {
+	float: right;
+	padding: 6px;
+	border: none;
+	font-size: 17px;
+}
+
 /* Home Content */
 
 .content-block {

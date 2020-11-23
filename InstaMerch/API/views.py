@@ -120,6 +120,11 @@ def stripe_webhook(request):
         order = models.Order.objects.get(
             session_id=event['data']['object']['id'])
         order.status = "Payment Confirmed"
+        for product in order.products.all():
+            print(product.account.credits)
+            product.account.credits += product.category.price/10
+            product.account.save()
+            print(product.account.credits)
         order.save()
 
     return HttpResponse(status=200)

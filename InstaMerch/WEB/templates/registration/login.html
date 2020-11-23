@@ -7,6 +7,7 @@
 		{% csrf_token %} {% if form.errors %}
 		<p>{{ form.errors }}</p>
 		{% endif %}
+
 		<p>{{ form.username }}</p>
 		<p>{{ form.password }}</p>
 
@@ -24,11 +25,12 @@
 
 	<script>
 		var form_fields = document.getElementsByTagName('input');
-		form_fields[1].placeholder = 'ENTER USERNAME';
-		form_fields[1].className += 'form-field';
-		form_fields[1].autocomplete = 'off';
-		form_fields[2].placeholder = 'ENTER PASSWORD';
+		console.log(form_fields);
+		form_fields[2].placeholder = 'ENTER USERNAME';
 		form_fields[2].className += 'form-field';
+		form_fields[2].autocomplete = 'off';
+		form_fields[3].placeholder = 'ENTER PASSWORD';
+		form_fields[3].className += 'form-field';
 	</script>
 </div>
 
