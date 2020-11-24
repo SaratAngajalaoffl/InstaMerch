@@ -11,8 +11,10 @@
 ## Setting up the development environment
 
   * Install `pipenv` by using the command `pip install pipenv`.
-
-  * Open `.env.example`,add the values and rename the file to `.env`.
+  
+  * Run `pipenv install` in the project directory to install all the dependencies.
+  
+  * Run `pipenv shell` to activate the environment.
 
   * Create a stripe account
 
@@ -21,8 +23,8 @@
   * After installation open your and run `stripe login`
   
   * Follow the login steps,after logging in run `stripe listen --forward-to localhost:8000/api/webhook/`
-  
-  * copy the webhook secret and paste it in settings.py file replacing the comment for webhook secret.
+
+  * Open `.env.example`,add the values and rename the file to `.env`.
   
   * Copy your test public and secret keys from the stripe dashboard and paste them in the respective comment areas in settings.py,you can also use them from your system variables for added security.
   
