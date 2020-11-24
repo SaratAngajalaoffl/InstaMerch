@@ -30,6 +30,8 @@
   
   * Create Superuser using `python manage.py createsuperuser`.
   
+  * Run the server using `python manage.py runserver`.
+  
 ## Running the application
  
   * Navigate to where the manage.py file is in your terminal
