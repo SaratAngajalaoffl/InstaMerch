@@ -26,7 +26,7 @@
 
   * Open `.env.example`,add the values and rename the file to `.env`.
   
-  * Copy your test public and secret keys from the stripe dashboard and paste them in the respective comment areas in settings.py,you can also use them from your system variables for added security.
+  * Change directory into the InstaMerch folder.
   
 ## Running the application
  
