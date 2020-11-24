@@ -28,6 +28,8 @@
   
   * Change directory into the InstaMerch folder.
   
+  * Create Superuser using `python manage.py createsuperuser`.
+  
 ## Running the application
  
   * Navigate to where the manage.py file is in your terminal
