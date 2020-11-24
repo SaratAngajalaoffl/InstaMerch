@@ -10,9 +10,9 @@
 
 ## Setting up the development environment
 
-  * Install all dependencies from the pipfile.
+  * Install `pipenv` by using the command `pip install pipenv`.
 
-  * Update Database settings at `InstaMerch/InstaMerch/settings.py` to your preferred database.
+  * Open `.env.example`,add the values and rename the file to `.env`.
 
   * Create a stripe account
 
