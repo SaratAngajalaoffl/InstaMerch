@@ -15,7 +15,7 @@
 			/>
 		</a>
 		<div>
-			<strong>{{user.user.username}}</strong>
+			<strong>{{user.user.first_name}} {{user.user.last_name}}</strong>
 		</div>
 		<div><strong>{{user.user.email}}</strong></div>
 		<div><p>Contact us @</p></div>
@@ -30,7 +30,7 @@
 	</div>
 	<div class="account-right">
 		<div class="account-right-top">
-			<h1>{{user}}'s Designs</h1>
+			<h1>{{user.user.first_name}}'s Designs</h1>
 		</div>
 		<div class="account-right-bottom">
 			<div class="designs">

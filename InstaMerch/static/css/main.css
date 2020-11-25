@@ -14,6 +14,20 @@ a.no-style {
 	color: black !important;
 }
 
+/* SIGN UP BUTTONS */
+
+.google-btn {
+	background-color: #db4437;
+	color: white;
+	text-decoration: none;
+	width: 25%;
+	height: 30px;
+	border-radius: 10px;
+	text-align: center;
+	font-size: larger;
+	vertical-align: center	;
+}
+
 /* Hero Image */
 
 .hero_image_container {
