@@ -353,3 +353,21 @@ def update_password_view(request):
             return HttpResponse('Passwords Donot Match')
     
     return render(request,"WEB/password_change.html")
+
+def search_view(request):
+
+    if request.method == 'POST':
+
+        data = request.POST
+
+        users = User.objects.filter(username=data['search-key'])
+        designs = models.Design.objects.filter(title=data['search-key'])
+
+        print(designs)
+
+        context = {
+            'users':users,
+            'designs':designs
+        }
+
+        return render(request,"WEB/searchresults.html",context)

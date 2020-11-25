@@ -1,0 +1,54 @@
+{% extends 'WEB/base.html' %}
+
+<!--prettier ignore -->
+{% block content %}
+
+<div class="hero_image_container per40"></div>
+
+<div class="content-block">
+	{% if users %}
+	<div class="content-header">Users</div>
+	<div class="content-body">
+		{% for user in users %}
+		<a class="content-product no-style" href="/designs/{{user.username}}">
+			<div class="product-img">
+				<img
+					src="{{ user.account.picture.url }}"
+					alt="design"
+					width="200px"
+					height="200px"
+				/>
+			</div>
+			<div class="product-description">
+				<div class="name">{{user.username}}</div>
+			</div>
+		</a>
+		{% endfor %}
+	</div>
+	{% endif %} {% if designs %}
+
+	<div class="content-header">Designs</div>
+	<div class="content-body">
+		{% for design in designs %}
+		<a class="content-product no-style" href="/design/{{design.id}}">
+			<div class="product-img">
+				<img
+					src="{{ design.picture.url }}"
+					alt="design"
+					width="200px"
+					height="200px"
+				/>
+			</div>
+			<div class="product-description">
+				<div class="name">{{design}}</div>
+				<div class="price">
+					₹&nbsp{{design.category.price|stringformat:"i"|slice:":-2"}}
+				</div>
+			</div>
+		</a>
+		{% endfor %}
+	</div>
+	{% endif %}
+</div>
+<!--prettier ignore -->
+{% endblock content %}

@@ -25,5 +25,5 @@ urlpatterns = [
     path('category/<str:categoryid>',views.designs_by_category_view,name='designs-of-category'),
     path('delete-account/',views.delete_account_view,name='delete_account'),
     path('update-password/',views.update_password_view,name='update_password'),
-
+    path('search/',views.search_view,name='search'),
 ]

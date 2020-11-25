@@ -18,12 +18,13 @@
 					<a class="no-style" href="/"> InstaMerch </a>
 				</div>
 				<div class="left_links">
-					<form action="/action_page.php">
+					<form action="{% url 'search' %}" method="POST">
+						{% csrf_token %}
 						<input
 							type="text"
 							id="search"
-							class="navlinks"
 							placeholder="Search.."
+							name="search-key"
 						/>
 						<button type="submit">
 							<i class="fa fa-search"></i>
