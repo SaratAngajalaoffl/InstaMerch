@@ -6,7 +6,6 @@
 <div class="hero_image_container per40"></div>
 
 <div class="content-block">
-	{% if users %}
 	<div class="content-header">Users</div>
 	<div class="content-body">
 		{% for user in users %}
@@ -23,9 +22,10 @@
 				<div class="name">{{user.username}}</div>
 			</div>
 		</a>
+		{% empty %}
+		<h1>No Users Found</h1>
 		{% endfor %}
 	</div>
-	{% endif %} {% if designs %}
 
 	<div class="content-header">Designs</div>
 	<div class="content-body">
@@ -46,9 +46,10 @@
 				</div>
 			</div>
 		</a>
+		{% empty %}
+		<h1>No Designs Found</h1>
 		{% endfor %}
 	</div>
-	{% endif %}
 </div>
 <!--prettier ignore -->
 {% endblock content %}

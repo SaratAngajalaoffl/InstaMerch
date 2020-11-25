@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.contrib.auth.forms import PasswordChangeForm
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 import WEB.forms as forms
@@ -10,6 +9,7 @@ import WEB.models as web_models
 from django.contrib.auth.models import User
 import datetime
 import stripe
+
 
 def home_view(request):
 
@@ -360,10 +360,22 @@ def search_view(request):
 
         data = request.POST
 
-        users = User.objects.filter(username=data['search-key'])
-        designs = models.Design.objects.filter(title=data['search-key'])
+        users = User.objects.filter(username__trigram_similar=data['search-key'])
+        design_set = models.Design.objects.filter(title__trigram_similar=data['search-key'])
+        categories = models.Category.objects.filter(name__trigram_similar=data['search-key'])
 
-        print(designs)
+        designs = []
+
+        for category in categories:
+            for design in category.design_set.all():
+                designs.append(design)
+
+        for design in design_set:
+            if design not in designs:
+                designs.append(design)
+        
+        print("Designs are",designs)
+        
 
         context = {
             'users':users,
