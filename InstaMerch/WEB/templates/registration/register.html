@@ -1,31 +1,33 @@
 {% extends 'WEB/base.html' %} {% block content %}
 
 <div class="auth-background">
-<h1 class="form-header">SIGNUP</h1>
-<form method="post" action="{% url 'register' %}" class="register-form">
-	{% csrf_token %}
-	{% if form.errors %}
-	<p> {{ form.errors }} </p>
-	{% endif %}
-	<p>{{ form.username }}</p>
-	<p>{{ form.email }}</p>
-	<p>{{ form.password1 }}</p>
-	<p>{{ form.password2 }}</p>
-	<input type="submit" value="Register" class="register-button"/>
-</form>
-<script>
+	<h1 class="form-header">SIGNUP</h1>
+	<form method="post" action="{% url 'register' %}" class="register-form">
+		{% csrf_token %} {% if form.errors %}
+		<p>{{ form.errors }}</p>
+		{% endif %}
+		<p>{{ form.username }}</p>
+		<p>{{ form.email }}</p>
+		<p>{{ form.password1 }}</p>
+		<p>{{ form.password2 }}</p>
+		<input type="submit" value="Register" class="register-button" />
+	</form>
+
+	<a href="{% url "social:begin" "google-oauth2" %}">SignUp With Google</a>
+
+	<script>
+
 		var form_fields = document.getElementsByTagName('input');
-		form_fields[2].placeholder = 'Username';
-		form_fields[2].autocomplete = 'off';
-		form_fields[2].className += 'form-field';
-		form_fields[3].placeholder = 'Email';
+		form_fields[3].placeholder = 'Username';
 		form_fields[3].autocomplete = 'off';
 		form_fields[3].className += 'form-field';
-		form_fields[4].placeholder = 'Password';
+		form_fields[4].placeholder = 'Email';
+		form_fields[4].autocomplete = 'off';
 		form_fields[4].className += 'form-field';
-		form_fields[5].placeholder = 'Confirm Password';
+		form_fields[5].placeholder = 'Password';
 		form_fields[5].className += 'form-field';
-</script>
-</form>
+		form_fields[6].placeholder = 'Confirm Password';
+		form_fields[6].className += 'form-field';
+	</script>
 </div>
 {% endblock content %}

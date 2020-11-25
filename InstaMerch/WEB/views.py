@@ -9,7 +9,8 @@ import WEB.models as web_models
 from django.contrib.auth.models import User
 import datetime
 import stripe
-
+import json
+import urllib
 
 def home_view(request):
 
@@ -383,3 +384,26 @@ def search_view(request):
         }
 
         return render(request,"WEB/searchresults.html",context)
+
+def gsignup_view(request):
+
+    if request.method == 'POST':
+
+        data = json.loads(request.body.decode())
+
+        user = User(username=data['username'].split(' ')[0],email=data['email'])
+        user.save()
+        
+        account = models.Account(user=user,picture=urllib.urlopen(data['picture']))
+        account.save()
+
+        login(request,user)
+
+        return redirect('cart')
+
+@login_required
+def done_view(request):
+    account = models.Account(user=request.user)
+    account.save()
+
+    return redirect('add_profile_pic')

@@ -1,3 +1,4 @@
+from os import name
 from django.urls import path, include
 
 import WEB.views as views
@@ -26,4 +27,7 @@ urlpatterns = [
     path('delete-account/',views.delete_account_view,name='delete_account'),
     path('update-password/',views.update_password_view,name='update_password'),
     path('search/',views.search_view,name='search'),
+    path('signGuser/',views.gsignup_view,name='Gsignup'),
+    path('', include('social_django.urls', namespace='social')),
+    path('done/',views.done_view,name="done"),
 ]
