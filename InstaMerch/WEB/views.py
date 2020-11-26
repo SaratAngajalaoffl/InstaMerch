@@ -409,6 +409,7 @@ def done_view(request):
         account.save()
         cart = web_models.Cart(account=account)
         cart.save()
+        print('commit test')
         return redirect('add_profile_pic')
     else:
         return redirect('home')
