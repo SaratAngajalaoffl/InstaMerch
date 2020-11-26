@@ -3,7 +3,42 @@
 <div class="auth-background">
 	<h1 class="form-header">LOGIN</h1>
 
-	<a href="{% url "social:begin" "google-oauth2" %}" class="google-btn">Sign In With Google</a>
+	<form method="post" class="register-form" action="{% url 'login' %}">
+		{% csrf_token %} {% if form.errors %}
+		<p>{{ form.errors }}</p>
+		{% endif %}
+
+		<p>{{ form.username }}</p>
+		<p>{{ form.password }}</p>
+
+		<p>
+			<input
+				type="submit"
+				value="LOGIN"
+				class="register-button"
+				nsame=""
+				id=""
+			/>
+		</p>
+		<p><input type="hidden" name="next" value="{{ next }}" /></p>
+		
+	</form>
+	
+	<div class="oauth-links">
+		<a href="{% url "social:begin" "google-oauth2" %}" class="google-btn">Google</a>
+		<a href="{% url "social:begin" "google-oauth2" %}" class="facebook-btn">Facebook</a>
+	</div>
+
+	<script>
+		var form_fields = document.getElementsByTagName('input');
+
+		form_fields[3].placeholder = 'ENTER USERNAME';
+		form_fields[3].className += 'form-field';
+		form_fields[3].autocomplete = 'off';
+		form_fields[4].placeholder = 'ENTER PASSWORD';
+		form_fields[4].className += 'form-field';
+	</script>
+
 </div>
 
 {% endblock content %}
