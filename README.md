@@ -10,7 +10,7 @@
 
 ## Setting up the development environment
 
-  * Install `pipenv` by using the command `pip install pipenv`.
+  * Install `pipenv` by using the command `pip install pipenv`(Make sure postgres is installed locally for postgres drivers to be installed correctly).
   
   * Run `pipenv install` in the project directory to install all the dependencies.
   
