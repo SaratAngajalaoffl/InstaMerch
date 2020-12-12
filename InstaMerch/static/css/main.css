@@ -14,6 +14,8 @@ a.no-style {
 	color: black !important;
 }
 
+
+
 /* Hero Image */
 
 .hero_image_container {
@@ -166,6 +168,38 @@ button {
 	overflow: scroll;
 }
 
+.oauth-links {
+	width: 30%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+/* SIGN UP BUTTONS */
+
+.google-btn {
+	background-color: #db4437;
+	color: white;
+	text-decoration: none;
+	width: 25%;
+	padding: 10px;
+	border-radius: 10px;
+	text-align: center;
+	font-size: 20px;
+}
+
+.facebook-btn {
+	background-color: #132d7b;
+	color: white;
+	text-decoration: none;
+	width: 25%;
+	padding: 10px;
+	border-radius: 10px;
+	text-align: center;
+	font-size: 20px;
+}
+
 /* Register Page */
 
 .form-header {
@@ -201,6 +235,10 @@ button {
 	border: none;
 	font-size: 30px;
 	border-radius: 20px;
+}
+
+.form-field.small {
+	width: 20vw;
 }
 
 .errorlist {

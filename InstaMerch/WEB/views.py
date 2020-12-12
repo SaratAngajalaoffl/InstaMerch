@@ -9,7 +9,8 @@ import WEB.models as web_models
 from django.contrib.auth.models import User
 import datetime
 import stripe
-
+import json
+import urllib
 
 def home_view(request):
 
@@ -25,6 +26,7 @@ def home_view(request):
             recent.append(design)
 
     bestsellers = sorted(designs,key = lambda design:design.purchases)[::-1][:6]
+    recent.reverse()
 
     context = {
         "user": request.user,
@@ -360,7 +362,7 @@ def search_view(request):
 
         data = request.POST
 
-        users = User.objects.filter(username__trigram_similar=data['search-key'])
+        users = User.objects.filter(username__icontains=data['search-key']).filter(first_name__icontains=data['search-key']).filter(email__icontains=data['search-key']).exclude(is_superuser=True)
         design_set = models.Design.objects.filter(title__trigram_similar=data['search-key'])
         categories = models.Category.objects.filter(name__trigram_similar=data['search-key'])
 
@@ -374,7 +376,7 @@ def search_view(request):
             if design not in designs:
                 designs.append(design)
         
-        print("Designs are",designs)
+        print("Users are",users)
         
 
         context = {
@@ -383,3 +385,31 @@ def search_view(request):
         }
 
         return render(request,"WEB/searchresults.html",context)
+
+def gsignup_view(request):
+
+    if request.method == 'POST':
+
+        data = json.loads(request.body.decode())
+
+        user = User(username=data['username'].split(' ')[0],email=data['email'])
+        user.save()
+        
+        account = models.Account(user=user,picture=urllib.urlopen(data['picture']))
+        account.save()
+
+        login(request,user)
+
+        return redirect('cart')
+
+@login_required
+def done_view(request):
+
+    if not models.Account.objects.filter(user=request.user):
+        account = models.Account(user=request.user)
+        account.save()
+        cart = web_models.Cart(account=account)
+        cart.save()
+        return redirect('add_profile_pic')
+    else:
+        return redirect('home')

@@ -7,4 +7,4 @@ class Cart(models.Model):
     account = models.OneToOneField("API.Account",on_delete=CASCADE)
 
     def __str__(self):
-        return str(self.account) + "'s Cart"
+        return str(self.account.user.first_name) + "'s Cart"

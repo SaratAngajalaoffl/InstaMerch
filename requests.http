@@ -1,18 +1,18 @@
-GET http://localhost:8000/api/Sampath/designs
+GET http://localhost:8000/api/hexalenergy/designs
 
 ####################################################################################
 
-GET http://localhost:8000/api/orders/25
+GET http://localhost:8000/api/orders/66
 
 ####################################################################################
 
-POST http://localhost:8000/api/place-order http/1.1
+POST http://localhost:8000/api/place-order/ http/1.1
 Content-Type: application/json
 
 {
     "products": [
         {
-            "product_id" : 16,
+            "product_id" : 66,
             "qty" : 1 
         }
     ],
@@ -23,6 +23,7 @@ Content-Type: application/json
         "city" : "Visakhapatnam",
         "country" : "India",
         "pincode" : "530009",
+        "telephone":"8074298749",
         "account":"2"
     },
     "success_url": "http://localhost:8000/",
