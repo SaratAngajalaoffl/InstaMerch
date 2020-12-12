@@ -5,10 +5,10 @@ from rest_framework import serializers
 class Design_serializer(serializers.ModelSerializer):
 
     account = serializers.CharField(source='account.user.username')
-
+    
     class Meta:
         model = models.Design
-        fields = ['id', 'picture', 'account', 'category']
+        fields = ['id', 'picture', 'account', 'category','title']
         depth = 1
 
 

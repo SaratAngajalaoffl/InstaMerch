@@ -26,6 +26,7 @@ def home_view(request):
             recent.append(design)
 
     bestsellers = sorted(designs,key = lambda design:design.purchases)[::-1][:6]
+    recent.reverse()
 
     context = {
         "user": request.user,

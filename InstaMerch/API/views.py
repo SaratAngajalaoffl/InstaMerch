@@ -27,29 +27,22 @@ def api_get_order_status(request, orderid):
         serializer = serializers.Orders_serializer(order)
         return Response(serializer.data)
     except:
-        return HttpResponse("No order with order id " + str(orderid) + "found.")
+        return Response("No order with order id " + str(orderid) + "found.",status=HTTP_404_NOT_FOUND)
 
 
 @api_view(['POST'])
 def api_post_order(request):
 
     data = request.data
-
     address = models.Address(
-        name = data['address']["name"],
         address_line1 = data['address']["address_line1"],
         address_line2 = data['address']["address_line2"],
         state = data['address']["state"],
         city = data['address']["city"],
         country = data['address']["country"],
-        pincode = data['address']["pincode"],
-        telephone = data['address']["telephone"],
-        account = request.user.account
+        pincode = data['address']["pincode"]
     )
     address.save()
-    if 'account' in data['address']:
-        address.account = models.Account.objects.get(id =data['address']["account"])
-        address.save()
     products = []
     for product in data['products']:
         products.append(models.Design.objects.get(id=product["product_id"]))
@@ -78,13 +71,15 @@ def api_post_order(request):
         return JsonResponse({'error': str(e)})
 
     order = models.Order(address=address)
-    if 'account' in data['address']:
-        order.account = address.account
     order.save()
     order.products.set(products)
     order.session_id = checkout_session['id']
     order.save()
     serializer = serializers.Orders_serializer(order)
+    # serializer = serializers.Orders_serializer(
+    #     order, data={"session_id": })
+    # if serializer.is_valid():
+    #     serializer.save()
 
     return Response(serializer.data)
 
